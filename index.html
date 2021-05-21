@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>イベント参加メンバーからアイマスユニットを探す</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://tankarup.github.io/million.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-primary bg-primary text-light p-0">
+        <h1 class="h3" id="title">イベント参加メンバーからアイマスユニットを探す</h1>
+    </nav>
+	<textarea id="member_text" class="form-control" rows="10">田所あずさ（最上静香役）
+郁原ゆう（エミリー スチュアート役）
+平山笑美（北上麗花役）
+雨宮 天（北沢志保役）
+田村奈央（木下ひなた役）
+香里有佐（桜守歌織役）
+大関英里（佐竹美奈子役）
+愛美（ジュリア役）
+近藤 唯（篠宮可憐役）
+南 早紀（白石 紬役）
+渡部恵子（周防桃子役）
+駒形友梨（高山紗代子役）
+小岩井ことり（天空橋朋花役）
+諏訪彩花（徳川まつり役）
+原嶋あかり（中谷 育役）
+小笠原早紀（野々原 茜役）
+麻倉もも（箱崎星梨花役）
+村川梨衣（松田亜利沙役）</textarea>
+	<button type="button" class="btn btn-primary" onclick="button_find();">ユニットを探す</button>
+	<div id="results"></div>
+	<ul>
+		<li>アイドルマスターのイベント出演者一覧テキストから、ユニットを探します。イベントページなどからコピペしてください。</li>
+		<li>アイドル名、声優名、ユニット名は<a href="https://sparql.crssnky.xyz/imas/">im@sparql</a>から2021/5に取得したデータを使用しています。</li>
+		<li>アイドルマスターはバンダイナムコエンターテインメント社が保有するコンテンツです。</li>
+	</ul>
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
