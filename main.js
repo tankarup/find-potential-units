@@ -56,7 +56,7 @@ function find_units(text){
 	html += '<ol>';
 	for (let found_unit of found_units){
 		
-		html += `<li>${found_unit}(${unit2members[found_unit].join(', ')})</li>`;
+		html += `<li><a href="https://fujiwarahaji.me/?s=${found_unit}" target="_blank">${found_unit}</a>(${unit2members[found_unit].join(', ')})</li>`;
 	}
 	html += '</ol>';
 
