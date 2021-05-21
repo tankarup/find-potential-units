@@ -3230,11 +3230,12 @@ uri2idol = {
 	https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kawashima_Mizuki : 川島瑞樹,
 }
 */
-let cv2idol = {}, uri2idol = {}, idol_names = [];
+let cv2idol = {}, uri2idol = {}, idol2cv = {}, idol_names = [];
 for (let item of sparql_idols.results.bindings){
 	const cv = item.cv;
 	if (cv['xml:lang']){
 		cv2idol[cv.value] = item.label.value;
+		idol2cv[item.label.value] = cv.value;
 		uri2idol[item.s.value] = item.label.value;
 		idol_names.push(item.label.value);
 	}

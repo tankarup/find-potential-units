@@ -22,7 +22,8 @@ function text2idols(text){
 			idols.push(cv2idol[name]);
 		}
 	}
-	return idols;
+	//重複削除して返す
+	return Array.from(new Set(idols));
 
 }
 /*
@@ -52,7 +53,7 @@ function find_units(text){
 	let html = '';
 
 
-	html += '<h2 class="h4">ユニット名一覧</h2>'
+	html += '<h2 class="h4 bg-success">ユニット名一覧</h2>'
 	html += '<ol>';
 	for (let found_unit of found_units){
 		
@@ -61,10 +62,10 @@ function find_units(text){
 	html += '</ol>';
 
 	
-	html += '<h2 class="h4">アイドル名一覧</h2>';
-	html += '<ol>';
+	html += '<h2 class="h4 bg-success">アイドル名一覧</h2>';
+	html += '<ol style="column-count: 2;">';
 	for (let idol of idols){
-		html += `<li>${idol}</li>`;
+		html += `<li>${idol} (${idol2cv[idol]})</li>`;
 	}
 	html += '</ol>';
 
