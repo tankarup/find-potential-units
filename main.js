@@ -57,7 +57,8 @@ function find_units(text){
 	html += '<ol>';
 	for (let found_unit of found_units){
 		//空白が含まれるユニット名だと検索がうまくないので""で囲うようにする
-		html += `<li><a href="https://fujiwarahaji.me/?s=${encodeURIComponent('"' + found_unit + '"')}" target="_blank">${found_unit}</a>(${unit2members[found_unit].join(', ')})</li>`;
+		const members = unit2members[found_unit].map(function(v){return `<span style="background-color: #${idol2color[v]};">　</span>${v}`;}).join(', ');
+		html += `<li><a href="https://fujiwarahaji.me/?s=${encodeURIComponent('"' + found_unit + '"')}" target="_blank">${found_unit}</a>(${members})</li>`;
 	}
 	html += '</ol>';
 
@@ -65,7 +66,7 @@ function find_units(text){
 	html += '<h2 class="h4 bg-success">アイドル名一覧</h2>';
 	html += '<ol style="column-count: 2;">';
 	for (let idol of idols){
-		html += `<li>${idol} (${idol2cv[idol]})</li>`;
+		html += `<li><span style="background-color: #${idol2color[idol]};">　　</span>${idol} (${idol2cv[idol]})</li>`;
 	}
 	html += '</ol>';
 
