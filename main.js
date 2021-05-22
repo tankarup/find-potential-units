@@ -56,8 +56,8 @@ function find_units(text){
 	html += '<h2 class="h4 bg-success">ユニット名一覧</h2>'
 	html += '<ol>';
 	for (let found_unit of found_units){
-		
-		html += `<li><a href="https://fujiwarahaji.me/?s=${found_unit}" target="_blank">${found_unit}</a>(${unit2members[found_unit].join(', ')})</li>`;
+		//空白が含まれるユニット名だと検索がうまくないので""で囲うようにする
+		html += `<li><a href="https://fujiwarahaji.me/?s=${encodeURIComponent('"' + found_unit + '"')}" target="_blank">${found_unit}</a>(${unit2members[found_unit].join(', ')})</li>`;
 	}
 	html += '</ol>';
 
