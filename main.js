@@ -9,7 +9,7 @@ text2idols(`田所あずさ（最上静香役）
 */
 function text2idols(text){
 	let idols = [];
-	const items = text.split(/[,:()\t\n、（）]/);
+	const items = text.split(/[,:/()\t\n、（）]/);
 	for (let item of items){
 		//名前に空白が入ってそうなので削除
 		const name = item.replace(/\s+/g,'');
