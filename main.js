@@ -21,6 +21,10 @@ function text2idols(text){
 		if (cv2idol[name]){
 			idols.push(cv2idol[name]);
 		}
+		//下の名前をフルネームに変換して追加
+		if (givenName2idol[name]){
+			idols.push(givenName2idol[name]);
+		}
 	}
 	//重複削除して返す
 	return Array.from(new Set(idols));
@@ -44,6 +48,8 @@ function find_units(text){
 	const unit_list = Object.keys(unit2members);
 	let found_units = [];
 	for (let test_unit of unit_list){
+		//メンバー数が1人ならカウントしない。
+		if (unit2members[test_unit].length < 2) continue;
 		if (has_all_members(test_unit, idols)){
 			found_units.push(test_unit);
 		}
@@ -54,7 +60,7 @@ function find_units(text){
 
 
 	html += '<h2 class="h4 bg-success">ユニット名一覧</h2>'
-	html += '<ol>';
+	html += '<ol style="column-count: 1;">';
 	for (let found_unit of found_units){
 		//空白が含まれるユニット名だと検索がうまくないので""で囲うようにする
 		const members = unit2members[found_unit].map(function(v){return `<span style="background-color: #${idol2color[v]};">　</span>${v}`;}).join(', ');

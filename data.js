@@ -1,451 +1,1180 @@
-/*
-SELECT distinct ?label ?cv ?s
+/* https://sparql.crssnky.xyz/imas/
+SELECT distinct ?label ?cv ?s ?givenName ?color
 WHERE {
  ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://sparql.crssnky.xyz/imasrdf/URIs/imas-schema.ttl#Idol>.
  ?s <http://www.w3.org/2000/01/rdf-schema#label> ?label.
- ?s <https://sparql.crssnky.xyz/imasrdf/URIs/imas-schema.ttl#cv> ?cv.
+ OPTIONAL {?s <https://sparql.crssnky.xyz/imasrdf/URIs/imas-schema.ttl#cv> ?cv}.
+ OPTIONAL {?s <http://schema.org/givenName> ?givenName}.
+ OPTIONAL {?s <https://sparql.crssnky.xyz/imasrdf/URIs/imas-schema.ttl#Color> ?color}.
 }
 */
 const sparql_idols = {
 	"head": {
-	  "vars": [ "label" , "cv" , "s" , "color" ]
+	  "vars": [ "label" , "cv" , "s" , "givenName" , "color" ]
 	} ,
 	"results": {
 	  "bindings": [
 		{
+		  "label": { "type": "literal" , "value": "大石泉" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ohishi_Izumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "泉" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大石泉" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ohishi_Izumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Izumi" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "花園百々人" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "宮﨑雅也" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hanazono_Momohito" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "百々人" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "花園百々人" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "宮﨑雅也" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hanazono_Momohito" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Momohito" }
+		} ,
+		{
 		  "label": { "type": "literal" , "value": "双葉杏" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/五十嵐裕美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futaba_Anzu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Anzu" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19DB4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "双葉杏" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/五十嵐裕美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futaba_Anzu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "杏" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19DB4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "双葉杏" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "五十嵐裕美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futaba_Anzu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Anzu" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19DB4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "双葉杏" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "五十嵐裕美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futaba_Anzu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "杏" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19DB4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "双葉杏" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q5770504" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futaba_Anzu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Anzu" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19DB4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "双葉杏" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q5770504" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futaba_Anzu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "杏" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19DB4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "相葉夕美" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q18048266" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aiba_Yumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "夕美" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EAE28D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "相葉夕美" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q18048266" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aiba_Yumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yumi" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EAE28D" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "相葉夕美" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/木村珠莉" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aiba_Yumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "夕美" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EAE28D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "相葉夕美" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/木村珠莉" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aiba_Yumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yumi" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EAE28D" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "相葉夕美" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "木村珠莉" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aiba_Yumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "夕美" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EAE28D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "相葉夕美" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "木村珠莉" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aiba_Yumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yumi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EAE28D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "柊志乃" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hiiragi_Shino" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shino" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "柊志乃" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hiiragi_Shino" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "志乃" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "村上巴" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "花井美春" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Murakami_Tomoe" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "巴" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D42E38" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "村上巴" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "花井美春" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Murakami_Tomoe" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tomoe" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D42E38" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "村上巴" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q44395473" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Murakami_Tomoe" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "巴" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D42E38" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "村上巴" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q44395473" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Murakami_Tomoe" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tomoe" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D42E38" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "東豪寺麗華" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q843178" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Togoji_Reika" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Togoji_Reika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Reika" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "東豪寺麗華" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q843178" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Togoji_Reika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "麗華" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "東豪寺麗華" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "今野宏美" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Togoji_Reika" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Togoji_Reika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Reika" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "東豪寺麗華" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "今野宏美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Togoji_Reika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "麗華" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "東豪寺麗華" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/今野宏美" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Togoji_Reika" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Togoji_Reika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Reika" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "東豪寺麗華" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/今野宏美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Togoji_Reika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "麗華" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "浜口あやめ" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/田澤茉純" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hamaguchi_Ayame" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "あやめ" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "471C87" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "浜口あやめ" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/田澤茉純" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hamaguchi_Ayame" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ayame" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "471C87" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "浜口あやめ" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "田澤茉純" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hamaguchi_Ayame" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "あやめ" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "471C87" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "浜口あやめ" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "田澤茉純" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hamaguchi_Ayame" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ayame" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "471C87" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "浜口あやめ" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q18048349" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hamaguchi_Ayame" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "あやめ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "471C87" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "浜口あやめ" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q18048349" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hamaguchi_Ayame" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ayame" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "471C87" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "ライラ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Layla" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "一ノ瀬志希" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/藍原ことみ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ichinose_Shiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shiki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A01B50" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "一ノ瀬志希" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/藍原ことみ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ichinose_Shiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "志希" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A01B50" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "一ノ瀬志希" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24875182" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ichinose_Shiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shiki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A01B50" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "一ノ瀬志希" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24875182" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ichinose_Shiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "志希" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A01B50" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "一ノ瀬志希" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "藍原ことみ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ichinose_Shiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shiki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A01B50" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "一ノ瀬志希" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "藍原ことみ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ichinose_Shiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "志希" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A01B50" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "華村翔真" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "バレッタ裕" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hanamura_Shoma" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shoma" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7664A0" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "華村翔真" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "バレッタ裕" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hanamura_Shoma" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "翔真" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7664A0" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "華村翔真" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/バレッタ裕" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hanamura_Shoma" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shoma" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7664A0" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "華村翔真" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/バレッタ裕" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hanamura_Shoma" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "翔真" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7664A0" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "華村翔真" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24865667" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hanamura_Shoma" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shoma" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7664A0" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "華村翔真" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24865667" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hanamura_Shoma" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "翔真" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7664A0" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "結城晴" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "小市眞琴" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yuuki_Haru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Haru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "45BDB4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "結城晴" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "小市眞琴" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yuuki_Haru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "晴" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "45BDB4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "結城晴" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/小市眞琴" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yuuki_Haru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Haru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "45BDB4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "結城晴" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/小市眞琴" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yuuki_Haru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "晴" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "45BDB4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "結城晴" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20039931" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yuuki_Haru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Haru" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "45BDB4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "結城晴" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20039931" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yuuki_Haru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "晴" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "45BDB4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "西島櫂" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nishijima_Kai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "櫂" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "西島櫂" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nishijima_Kai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kai" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "萩原雪歩" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q8191313" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hagiwara_Yukiho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yukiho" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D3DDE9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "萩原雪歩" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q8191313" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hagiwara_Yukiho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "雪歩" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D3DDE9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "萩原雪歩" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "浅倉杏美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hagiwara_Yukiho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yukiho" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D3DDE9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "萩原雪歩" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "浅倉杏美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hagiwara_Yukiho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "雪歩" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D3DDE9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "萩原雪歩" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/浅倉杏美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hagiwara_Yukiho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yukiho" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D3DDE9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "萩原雪歩" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/浅倉杏美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hagiwara_Yukiho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "雪歩" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D3DDE9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "市川雛菜" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "岡咲美保" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ichikawa_Hinana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hinana" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFC639" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "市川雛菜" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "岡咲美保" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ichikawa_Hinana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "雛菜" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFC639" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "市川雛菜" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q51676463" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ichikawa_Hinana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hinana" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFC639" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "市川雛菜" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q51676463" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ichikawa_Hinana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "雛菜" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFC639" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "月宮雅" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsukimiya_Miyabi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "雅" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "月宮雅" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsukimiya_Miyabi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miyabi" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "東郷あい" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Togo_Ai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "あい" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "東郷あい" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Togo_Ai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ai" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "幽谷霧子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/結名美月" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yukoku_Kiriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "霧子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D9F2FF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "幽谷霧子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/結名美月" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yukoku_Kiriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kiriko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D9F2FF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "幽谷霧子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "結名美月" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yukoku_Kiriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "霧子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D9F2FF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "幽谷霧子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "結名美月" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yukoku_Kiriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kiriko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D9F2FF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "幽谷霧子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17225022" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yukoku_Kiriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "霧子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D9F2FF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "幽谷霧子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17225022" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yukoku_Kiriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kiriko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D9F2FF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "有栖川夏葉" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "涼本あきほ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Arisugawa_Natsuha" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Natsuha" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "90E667" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "有栖川夏葉" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "涼本あきほ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Arisugawa_Natsuha" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "夏葉" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "90E667" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "有栖川夏葉" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q43426885" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Arisugawa_Natsuha" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Natsuha" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "90E667" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "有栖川夏葉" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q43426885" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Arisugawa_Natsuha" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "夏葉" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "90E667" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "野々村そら" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nonomura_Sora" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "そら" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "野々村そら" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nonomura_Sora" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sora" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "永吉昴" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/斉藤佑圭" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nagayoshi_Subaru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "昴" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AEB49C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "永吉昴" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/斉藤佑圭" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nagayoshi_Subaru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Subaru" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AEB49C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "永吉昴" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "斉藤佑圭" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nagayoshi_Subaru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "昴" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AEB49C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "永吉昴" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "斉藤佑圭" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nagayoshi_Subaru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Subaru" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AEB49C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "永吉昴" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1064842" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nagayoshi_Subaru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "昴" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AEB49C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "永吉昴" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1064842" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nagayoshi_Subaru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Subaru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AEB49C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "若林智香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Wakabayashi_Tomoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tomoka" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "若林智香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Wakabayashi_Tomoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "智香" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大崎甘奈" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "黒木ほの香" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Osaki_Amana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "甘奈" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F54275" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大崎甘奈" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "黒木ほの香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Osaki_Amana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Amana" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F54275" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大崎甘奈" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q30929032" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Osaki_Amana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "甘奈" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F54275" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大崎甘奈" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q30929032" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Osaki_Amana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Amana" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F54275" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "木村龍" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/濱健人" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kimura_Ryu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "龍" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE7220" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "木村龍" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/濱健人" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kimura_Ryu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ryu" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE7220" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "木村龍" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20042322" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kimura_Ryu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "龍" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE7220" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "木村龍" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20042322" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kimura_Ryu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ryu" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE7220" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "木村龍" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "濱健人" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kimura_Ryu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "龍" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE7220" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "木村龍" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "濱健人" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kimura_Ryu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ryu" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE7220" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "関裕美" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "会沢紗弥" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Seki_Hiromi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hiromi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8C5C1" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "関裕美" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "会沢紗弥" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Seki_Hiromi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "裕美" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8C5C1" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "関裕美" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q41585491" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Seki_Hiromi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hiromi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8C5C1" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "関裕美" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q41585491" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Seki_Hiromi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "裕美" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8C5C1" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "早坂美玲" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/朝井彩加" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hayasaka_Mirei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mirei" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B72089" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "早坂美玲" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/朝井彩加" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hayasaka_Mirei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美玲" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B72089" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "早坂美玲" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17685820" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hayasaka_Mirei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mirei" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B72089" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "早坂美玲" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17685820" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hayasaka_Mirei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美玲" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B72089" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "早坂美玲" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "朝井彩加" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hayasaka_Mirei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mirei" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B72089" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "早坂美玲" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "朝井彩加" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hayasaka_Mirei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美玲" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B72089" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "冬美旬" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/永塚拓馬" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fuyumi_Jun" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "旬" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1845B9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "冬美旬" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/永塚拓馬" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fuyumi_Jun" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Jun" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1845B9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "冬美旬" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "永塚拓馬" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fuyumi_Jun" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "旬" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1845B9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "冬美旬" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "永塚拓馬" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fuyumi_Jun" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Jun" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1845B9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "冬美旬" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20760484" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fuyumi_Jun" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "旬" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1845B9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "冬美旬" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20760484" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fuyumi_Jun" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Jun" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1845B9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "本田未央" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q333320" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Honda_Mio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "未央" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F6B128" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "本田未央" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q333320" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Honda_Mio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mio" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F6B128" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "本田未央" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/原紗友里" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Honda_Mio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "未央" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F6B128" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "本田未央" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/原紗友里" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Honda_Mio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mio" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F6B128" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "本田未央" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "原紗友里" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Honda_Mio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "未央" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F6B128" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "本田未央" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "原紗友里" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Honda_Mio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mio" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F6B128" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "涼宮星花" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suzumiya_Seika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "星花" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "涼宮星花" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suzumiya_Seika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Seika" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "木下ひなた" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11576902" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kinoshita_Hinata" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ひなた" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D1342C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "木下ひなた" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11576902" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kinoshita_Hinata" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hinata" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D1342C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "木下ひなた" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/田村奈央" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kinoshita_Hinata" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ひなた" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D1342C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "木下ひなた" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/田村奈央" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kinoshita_Hinata" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hinata" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D1342C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "木下ひなた" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "田村奈央" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kinoshita_Hinata" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ひなた" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D1342C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "木下ひなた" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "田村奈央" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kinoshita_Hinata" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hinata" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D1342C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "星輝子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17230362" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hoshi_Syoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Syoko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A21D3C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "星輝子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17230362" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hoshi_Syoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "輝子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A21D3C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "星輝子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/松田颯水" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hoshi_Syoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Syoko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A21D3C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "星輝子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/松田颯水" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hoshi_Syoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "輝子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A21D3C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "星輝子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "松田颯水" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hoshi_Syoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Syoko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A21D3C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "星輝子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "松田颯水" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hoshi_Syoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "輝子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A21D3C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "古澤頼子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Furusawa_Yoriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "頼子" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "古澤頼子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Furusawa_Yoriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yoriko" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "清澄九郎" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/中田祐矢" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiyosumi_Kuro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "九郎" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "79A5DF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "清澄九郎" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/中田祐矢" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiyosumi_Kuro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kuro" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "79A5DF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "清澄九郎" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11366741" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiyosumi_Kuro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "九郎" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "79A5DF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "清澄九郎" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11366741" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiyosumi_Kuro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kuro" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "79A5DF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "清澄九郎" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "中田祐矢" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiyosumi_Kuro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "九郎" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "79A5DF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "清澄九郎" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "中田祐矢" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiyosumi_Kuro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kuro" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "79A5DF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "卯月巻緒" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/児玉卓也" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Uzuki_Makio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "巻緒" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8C559" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "卯月巻緒" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/児玉卓也" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Uzuki_Makio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Makio" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8C559" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "卯月巻緒" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24865377" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Uzuki_Makio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "巻緒" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8C559" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "卯月巻緒" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24865377" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Uzuki_Makio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Makio" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8C559" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "卯月巻緒" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "児玉卓也" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Uzuki_Makio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "巻緒" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8C559" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "卯月巻緒" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "児玉卓也" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Uzuki_Makio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Makio" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8C559" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "桑山千雪" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20040525" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kuwayama_Chiyuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chiyuki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FBFAFA" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桑山千雪" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20040525" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kuwayama_Chiyuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千雪" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FBFAFA" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "桑山千雪" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/芝崎典子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kuwayama_Chiyuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chiyuki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FBFAFA" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桑山千雪" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/芝崎典子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kuwayama_Chiyuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千雪" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FBFAFA" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "桑山千雪" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "芝崎典子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kuwayama_Chiyuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chiyuki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FBFAFA" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桑山千雪" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "芝崎典子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kuwayama_Chiyuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千雪" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FBFAFA" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "木場真奈美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiba_Manami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Manami" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "木場真奈美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiba_Manami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "真奈美" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "財前時子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Zaizen_Tokiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "時子" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "財前時子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Zaizen_Tokiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tokiko" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "伊吹翼" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "Machico" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ibuki_Tsubasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "翼" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FED552" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "伊吹翼" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "Machico" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ibuki_Tsubasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tsubasa" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FED552" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "伊吹翼" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/Machico" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ibuki_Tsubasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "翼" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FED552" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "伊吹翼" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/Machico" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ibuki_Tsubasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tsubasa" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FED552" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "伊吹翼" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11232628" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ibuki_Tsubasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "翼" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FED552" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "伊吹翼" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11232628" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ibuki_Tsubasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tsubasa" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FED552" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "小松伊吹" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Komatsu_Ibuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "伊吹" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "小松伊吹" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Komatsu_Ibuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ibuki" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "白石紬" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "南早紀" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiraishi_Tsumugi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tsumugi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EBE1FF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "白石紬" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "南早紀" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiraishi_Tsumugi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "紬" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EBE1FF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "白石紬" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/南早紀" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiraishi_Tsumugi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tsumugi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EBE1FF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "白石紬" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/南早紀" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiraishi_Tsumugi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "紬" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EBE1FF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "白石紬" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q28690521" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiraishi_Tsumugi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tsumugi" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EBE1FF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "白石紬" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q28690521" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiraishi_Tsumugi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "紬" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EBE1FF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "柳清良" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yanagi_Kiyora" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "清良" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "柳清良" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yanagi_Kiyora" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kiyora" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "ジュリア" } ,
@@ -466,783 +1195,1939 @@ const sparql_idols = {
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D7385F" }
 		} ,
 		{
+		  "label": { "type": "literal" , "value": "ヘレン" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Helen" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "キャシー・グラハム" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Cathy_Graham" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "キャシー" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "キャシー・グラハム" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Cathy_Graham" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Cathy" }
+		} ,
+		{
 		  "label": { "type": "literal" , "value": "道明寺歌鈴" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17212219" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Domyoji_Karin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Karin" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CC252D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "道明寺歌鈴" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17212219" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Domyoji_Karin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "歌鈴" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CC252D" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "道明寺歌鈴" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "新田ひより" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Domyoji_Karin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Karin" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CC252D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "道明寺歌鈴" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "新田ひより" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Domyoji_Karin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "歌鈴" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CC252D" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "道明寺歌鈴" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/新田ひより" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Domyoji_Karin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Karin" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CC252D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "道明寺歌鈴" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/新田ひより" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Domyoji_Karin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "歌鈴" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CC252D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "仙崎恵磨" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Senzaki_Ema" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "恵磨" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "仙崎恵磨" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Senzaki_Ema" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ema" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "信玄誠司" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/増元拓也" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shingen_Seiji" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Seiji" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "78853A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "信玄誠司" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/増元拓也" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shingen_Seiji" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "誠司" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "78853A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "信玄誠司" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17230347" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shingen_Seiji" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Seiji" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "78853A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "信玄誠司" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17230347" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shingen_Seiji" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "誠司" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "78853A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "信玄誠司" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "増元拓也" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shingen_Seiji" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Seiji" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "78853A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "信玄誠司" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "増元拓也" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shingen_Seiji" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "誠司" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "78853A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "宮尾美也" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "桐谷蝶々" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miyao_Miya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miya" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D7A96B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "宮尾美也" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "桐谷蝶々" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miyao_Miya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美也" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D7A96B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "宮尾美也" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/桐谷蝶々" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miyao_Miya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miya" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D7A96B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "宮尾美也" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/桐谷蝶々" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miyao_Miya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美也" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D7A96B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "宮尾美也" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17157954" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miyao_Miya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miya" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D7A96B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "宮尾美也" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17157954" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miyao_Miya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美也" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D7A96B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "和泉愛依" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1050949" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Izumi_Mei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "愛依" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FF00FF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "和泉愛依" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1050949" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Izumi_Mei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mei" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FF00FF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "和泉愛依" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/北原沙弥香" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Izumi_Mei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "愛依" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FF00FF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "和泉愛依" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/北原沙弥香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Izumi_Mei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mei" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FF00FF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "和泉愛依" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "北原沙弥香" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Izumi_Mei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "愛依" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FF00FF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "和泉愛依" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "北原沙弥香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Izumi_Mei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mei" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FF00FF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "水谷絵理" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/花澤香菜" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizutani_Eri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "絵理" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "00ADB9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水谷絵理" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/花澤香菜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizutani_Eri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Eri" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "00ADB9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "水谷絵理" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q49524" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizutani_Eri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "絵理" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "00ADB9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水谷絵理" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q49524" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizutani_Eri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Eri" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "00ADB9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "水谷絵理" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "花澤香菜" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizutani_Eri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "絵理" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "00ADB9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水谷絵理" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "花澤香菜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizutani_Eri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Eri" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "00ADB9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "三峰結華" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q56886205" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mitsumine_Yuika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "結華" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3B91C4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "三峰結華" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q56886205" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mitsumine_Yuika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuika" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3B91C4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "三峰結華" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "成海瑠奈" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mitsumine_Yuika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "結華" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3B91C4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "三峰結華" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "成海瑠奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mitsumine_Yuika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuika" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3B91C4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "依田芳乃" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q22125278" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yorita_Yoshino" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "芳乃" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C7BAB4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "依田芳乃" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q22125278" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yorita_Yoshino" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yoshino" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C7BAB4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "依田芳乃" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/高田憂希" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yorita_Yoshino" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "芳乃" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C7BAB4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "依田芳乃" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/高田憂希" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yorita_Yoshino" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yoshino" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C7BAB4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "依田芳乃" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "高田憂希" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yorita_Yoshino" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "芳乃" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C7BAB4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "依田芳乃" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "高田憂希" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yorita_Yoshino" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yoshino" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C7BAB4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "野々原茜" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/小笠原早紀" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nonohara_Akane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Akane" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EB613F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "野々原茜" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/小笠原早紀" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nonohara_Akane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "茜" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EB613F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "野々原茜" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "小笠原早紀" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nonohara_Akane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Akane" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EB613F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "野々原茜" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "小笠原早紀" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nonohara_Akane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "茜" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EB613F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "野々原茜" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11463365" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nonohara_Akane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Akane" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EB613F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "野々原茜" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11463365" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nonohara_Akane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "茜" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EB613F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "砂塚あきら" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "富田美憂" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sunazuka_Akira" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sunazuka_Akira" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Akira" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "砂塚あきら" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "富田美憂" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sunazuka_Akira" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "あきら" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "砂塚あきら" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/富田美憂" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sunazuka_Akira" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sunazuka_Akira" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Akira" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "砂塚あきら" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/富田美憂" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sunazuka_Akira" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "あきら" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "砂塚あきら" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q22131362" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sunazuka_Akira" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sunazuka_Akira" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Akira" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "砂塚あきら" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q22131362" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sunazuka_Akira" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "あきら" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "桜守歌織" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q30932235" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuramori_Kaori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "歌織" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "274079" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桜守歌織" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q30932235" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuramori_Kaori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kaori" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "274079" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "桜守歌織" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "香里有佐" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuramori_Kaori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "歌織" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "274079" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桜守歌織" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "香里有佐" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuramori_Kaori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kaori" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "274079" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "舞浜歩" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/戸田めぐみ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maihama_Ayumu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "歩" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E25A9B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "舞浜歩" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/戸田めぐみ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maihama_Ayumu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ayumu" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E25A9B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "舞浜歩" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16003597" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maihama_Ayumu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "歩" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E25A9B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "舞浜歩" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16003597" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maihama_Ayumu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ayumu" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E25A9B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "舞浜歩" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "戸田めぐみ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maihama_Ayumu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "歩" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E25A9B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "舞浜歩" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "戸田めぐみ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maihama_Ayumu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ayumu" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E25A9B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "神崎蘭子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q44552" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kanzaki_Ranko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "蘭子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7E3188" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "神崎蘭子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q44552" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kanzaki_Ranko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ranko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7E3188" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "神崎蘭子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "内田真礼" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kanzaki_Ranko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "蘭子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7E3188" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "神崎蘭子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "内田真礼" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kanzaki_Ranko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ranko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7E3188" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "神崎蘭子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/内田真礼" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kanzaki_Ranko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "蘭子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7E3188" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "神崎蘭子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/内田真礼" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kanzaki_Ranko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ranko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7E3188" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "成宮由愛" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Narumiya_Yume" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "由愛" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "成宮由愛" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Narumiya_Yume" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yume" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "伊集院北斗" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/神原大地" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ijuin_Hokuto" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hokuto" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1C23AA" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "伊集院北斗" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/神原大地" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ijuin_Hokuto" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "北斗" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1C23AA" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "伊集院北斗" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "神原大地" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ijuin_Hokuto" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hokuto" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1C23AA" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "伊集院北斗" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "神原大地" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ijuin_Hokuto" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "北斗" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1C23AA" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "伊集院北斗" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q8977305" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ijuin_Hokuto" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hokuto" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1C23AA" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "伊集院北斗" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q8977305" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ijuin_Hokuto" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "北斗" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1C23AA" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "黒埼ちとせ" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11383006" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurosaki_Chitose" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurosaki_Chitose" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ちとせ" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "黒埼ちとせ" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11383006" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurosaki_Chitose" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chitose" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "黒埼ちとせ" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "佐倉薫" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurosaki_Chitose" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurosaki_Chitose" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ちとせ" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "黒埼ちとせ" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "佐倉薫" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurosaki_Chitose" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chitose" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "黒埼ちとせ" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/佐倉薫" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurosaki_Chitose" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurosaki_Chitose" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ちとせ" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "黒埼ちとせ" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/佐倉薫" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurosaki_Chitose" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chitose" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "岡村直央" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24897980" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Okamura_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "直央" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1F1451" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "岡村直央" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24897980" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Okamura_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nao" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1F1451" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "岡村直央" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "矢野奨吾" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Okamura_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "直央" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1F1451" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "岡村直央" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "矢野奨吾" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Okamura_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nao" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1F1451" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "岡村直央" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/矢野奨吾" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Okamura_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "直央" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1F1451" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "岡村直央" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/矢野奨吾" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Okamura_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nao" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1F1451" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "東雲荘一郎" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/天崎滉平" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shinonome_Soichiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "荘一郎" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "02946C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "東雲荘一郎" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/天崎滉平" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shinonome_Soichiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Soichiro" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "02946C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "東雲荘一郎" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20038507" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shinonome_Soichiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "荘一郎" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "02946C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "東雲荘一郎" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20038507" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shinonome_Soichiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Soichiro" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "02946C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "東雲荘一郎" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "天崎滉平" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shinonome_Soichiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "荘一郎" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "02946C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "東雲荘一郎" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "天崎滉平" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shinonome_Soichiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Soichiro" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "02946C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "田中摩美々" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q48765622" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tanaka_Mamimi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "摩美々" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A846FB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "田中摩美々" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q48765622" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tanaka_Mamimi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mamimi" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A846FB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "田中摩美々" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "菅沼千紗" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tanaka_Mamimi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "摩美々" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A846FB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "田中摩美々" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "菅沼千紗" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tanaka_Mamimi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mamimi" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A846FB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "田中摩美々" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/菅沼千紗" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tanaka_Mamimi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "摩美々" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A846FB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "田中摩美々" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/菅沼千紗" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tanaka_Mamimi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mamimi" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A846FB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "百瀬莉緒" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "山口立花子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Momose_Rio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rio" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19591" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "百瀬莉緒" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "山口立花子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Momose_Rio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "莉緒" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19591" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "百瀬莉緒" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11467404" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Momose_Rio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rio" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19591" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "百瀬莉緒" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11467404" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Momose_Rio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "莉緒" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19591" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "百瀬莉緒" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/山口立花子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Momose_Rio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rio" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19591" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "百瀬莉緒" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/山口立花子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Momose_Rio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "莉緒" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19591" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "五十嵐響子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "種崎敦美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Igarashi_Kyoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kyoko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F567C6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "五十嵐響子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "種崎敦美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Igarashi_Kyoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "響子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F567C6" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "五十嵐響子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/種崎敦美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Igarashi_Kyoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kyoko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F567C6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "五十嵐響子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/種崎敦美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Igarashi_Kyoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "響子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F567C6" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "五十嵐響子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q3183413" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Igarashi_Kyoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kyoko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F567C6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "五十嵐響子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q3183413" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Igarashi_Kyoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "響子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F567C6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "八神マキノ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yagami_Makino" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Makino" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "八神マキノ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yagami_Makino" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "マキノ" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水木聖來" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizuki_Seira" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "聖來" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水木聖來" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizuki_Seira" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Seira" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "市原仁奈" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/久野美咲" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ichihara_Nina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "仁奈" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7DE8C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "市原仁奈" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/久野美咲" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ichihara_Nina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nina" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7DE8C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "市原仁奈" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "久野美咲" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ichihara_Nina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "仁奈" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7DE8C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "市原仁奈" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "久野美咲" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ichihara_Nina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nina" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7DE8C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "市原仁奈" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11369771" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ichihara_Nina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "仁奈" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7DE8C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "市原仁奈" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11369771" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ichihara_Nina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nina" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7DE8C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "天海春香" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q911795" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Amami_Haruka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Haruka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E22B30" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "天海春香" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q911795" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Amami_Haruka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "春香" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E22B30" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "天海春香" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/中村繪里子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Amami_Haruka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Haruka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E22B30" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "天海春香" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/中村繪里子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Amami_Haruka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "春香" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E22B30" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "天海春香" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "中村繪里子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Amami_Haruka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Haruka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E22B30" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "天海春香" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "中村繪里子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Amami_Haruka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "春香" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E22B30" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "藤原肇" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q22129371" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fujiwara_Hajime" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "肇" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7271B3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "藤原肇" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q22129371" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fujiwara_Hajime" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hajime" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7271B3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "藤原肇" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "鈴木みのり" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fujiwara_Hajime" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "肇" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7271B3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "藤原肇" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "鈴木みのり" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fujiwara_Hajime" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hajime" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7271B3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "藤原肇" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/鈴木みのり" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fujiwara_Hajime" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "肇" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7271B3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "藤原肇" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/鈴木みのり" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fujiwara_Hajime" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hajime" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7271B3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大崎甜花" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/前川涼子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Osaki_Tenka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tenka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E75BEC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大崎甜花" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/前川涼子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Osaki_Tenka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "甜花" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E75BEC" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大崎甜花" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "前川涼子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Osaki_Tenka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tenka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E75BEC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大崎甜花" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "前川涼子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Osaki_Tenka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "甜花" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E75BEC" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大崎甜花" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24820042" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Osaki_Tenka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tenka" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E75BEC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大崎甜花" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24820042" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Osaki_Tenka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "甜花" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E75BEC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高峯のあ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takamine_Noa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "のあ" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高峯のあ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takamine_Noa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Noa" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "松本沙理奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsumoto_Sarina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sarina" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "松本沙理奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsumoto_Sarina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "沙理奈" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "新田美波" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/洲崎綾" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nitta_Minami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Minami" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6DBCDB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "新田美波" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/洲崎綾" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nitta_Minami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美波" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6DBCDB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "新田美波" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q888218" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nitta_Minami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Minami" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6DBCDB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "新田美波" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q888218" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nitta_Minami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美波" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6DBCDB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "新田美波" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "洲崎綾" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nitta_Minami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Minami" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6DBCDB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "新田美波" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "洲崎綾" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nitta_Minami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美波" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6DBCDB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "櫻井桃華" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11567752" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakurai_Momoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Momoka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EF93BC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "櫻井桃華" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11567752" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakurai_Momoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "桃華" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EF93BC" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "櫻井桃華" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/照井春佳" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakurai_Momoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Momoka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EF93BC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "櫻井桃華" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/照井春佳" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakurai_Momoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "桃華" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EF93BC" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "櫻井桃華" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "照井春佳" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakurai_Momoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Momoka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EF93BC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "櫻井桃華" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "照井春佳" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakurai_Momoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "桃華" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EF93BC" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "七尾百合子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "伊藤美来" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nanao_Yuriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "百合子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C7B83C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "七尾百合子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "伊藤美来" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nanao_Yuriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuriko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C7B83C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "七尾百合子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16264202" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nanao_Yuriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "百合子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C7B83C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "七尾百合子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16264202" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nanao_Yuriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuriko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C7B83C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "七尾百合子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/伊藤美来" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nanao_Yuriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "百合子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C7B83C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "七尾百合子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/伊藤美来" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nanao_Yuriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuriko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C7B83C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "神谷奈緒" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11529115" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamiya_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nao" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "8D75B3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "神谷奈緒" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11529115" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamiya_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "奈緒" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "8D75B3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "神谷奈緒" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "松井恵理子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamiya_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nao" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "8D75B3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "神谷奈緒" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "松井恵理子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamiya_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "奈緒" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "8D75B3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "神谷奈緒" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/松井恵理子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamiya_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nao" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "8D75B3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "神谷奈緒" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/松井恵理子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamiya_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "奈緒" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "8D75B3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "黛冬優子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "幸村恵理" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mayuzumi_Fuyuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Fuyuko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5CE626" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "黛冬優子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "幸村恵理" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mayuzumi_Fuyuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "冬優子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5CE626" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "黛冬優子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q59141816" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mayuzumi_Fuyuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Fuyuko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5CE626" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "黛冬優子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q59141816" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mayuzumi_Fuyuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "冬優子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5CE626" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "緒方智絵里" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/大空直美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ogata_Chieri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chieri" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "69B64C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "緒方智絵里" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/大空直美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ogata_Chieri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "智絵里" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "69B64C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "緒方智絵里" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "大空直美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ogata_Chieri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chieri" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "69B64C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "緒方智絵里" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "大空直美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ogata_Chieri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "智絵里" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "69B64C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "緒方智絵里" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q15731362" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ogata_Chieri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chieri" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "69B64C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "緒方智絵里" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q15731362" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ogata_Chieri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "智絵里" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "69B64C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "輿水幸子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1204576" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koshimizu_Sachiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "幸子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CCAACF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "輿水幸子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1204576" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koshimizu_Sachiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sachiko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CCAACF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "輿水幸子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/竹達彩奈" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koshimizu_Sachiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "幸子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CCAACF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "輿水幸子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/竹達彩奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koshimizu_Sachiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sachiko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CCAACF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "輿水幸子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "竹達彩奈" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koshimizu_Sachiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "幸子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CCAACF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "輿水幸子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "竹達彩奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koshimizu_Sachiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sachiko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CCAACF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "松山久美子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsuyama_Kumiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "久美子" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "松山久美子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsuyama_Kumiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kumiko" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "池袋晶葉" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ikebukuro_Akiha" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "晶葉" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "池袋晶葉" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ikebukuro_Akiha" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Akiha" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "葛之葉雨彦" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "笠間淳" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kuzunoha_Amehiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Amehiko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "111721" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "葛之葉雨彦" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "笠間淳" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kuzunoha_Amehiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "雨彦" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "111721" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "葛之葉雨彦" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/笠間淳" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kuzunoha_Amehiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Amehiko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "111721" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "葛之葉雨彦" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/笠間淳" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kuzunoha_Amehiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "雨彦" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "111721" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "葛之葉雨彦" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q27150536" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kuzunoha_Amehiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Amehiko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "111721" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "葛之葉雨彦" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q27150536" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kuzunoha_Amehiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "雨彦" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "111721" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "高山紗代子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "駒形友梨" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takayama_Sayoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "紗代子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7F6575" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高山紗代子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "駒形友梨" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takayama_Sayoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sayoko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7F6575" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "高山紗代子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/駒形友梨" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takayama_Sayoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "紗代子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7F6575" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高山紗代子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/駒形友梨" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takayama_Sayoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sayoko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7F6575" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "高山紗代子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11668361" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takayama_Sayoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "紗代子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7F6575" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高山紗代子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11668361" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takayama_Sayoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sayoko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7F6575" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "北条加蓮" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "渕上舞" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hojo_Karen" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Karen" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "38BAB8" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "北条加蓮" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "渕上舞" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hojo_Karen" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "加蓮" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "38BAB8" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "北条加蓮" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/渕上舞" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hojo_Karen" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Karen" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "38BAB8" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "北条加蓮" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/渕上舞" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hojo_Karen" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "加蓮" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "38BAB8" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "北条加蓮" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q9307208" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hojo_Karen" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Karen" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "38BAB8" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "北条加蓮" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q9307208" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hojo_Karen" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "加蓮" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "38BAB8" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "黒野玄武" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "深町寿成" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurono_Genbu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "玄武" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0F0C9F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "黒野玄武" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "深町寿成" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurono_Genbu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Genbu" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0F0C9F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "黒野玄武" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/深町寿成" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurono_Genbu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "玄武" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0F0C9F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "黒野玄武" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/深町寿成" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurono_Genbu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Genbu" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0F0C9F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "黒野玄武" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17230037" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurono_Genbu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "玄武" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0F0C9F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "黒野玄武" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17230037" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurono_Genbu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Genbu" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0F0C9F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "所恵美" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11622668" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tokoro_Megumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "恵美" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "454341" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "所恵美" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11622668" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tokoro_Megumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Megumi" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "454341" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "所恵美" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/藤井ゆきよ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tokoro_Megumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "恵美" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "454341" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "所恵美" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/藤井ゆきよ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tokoro_Megumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Megumi" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "454341" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "所恵美" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "藤井ゆきよ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tokoro_Megumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "恵美" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "454341" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "所恵美" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "藤井ゆきよ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tokoro_Megumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Megumi" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "454341" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "南条光" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "神谷早矢佳" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nanjo_Hikaru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "光" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "ED0829" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "南条光" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "神谷早矢佳" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nanjo_Hikaru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hikaru" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "ED0829" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "南条光" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q60296629" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nanjo_Hikaru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "光" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "ED0829" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "南条光" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q60296629" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nanjo_Hikaru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hikaru" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "ED0829" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "斑鳩ルカ" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/川口莉奈" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ikaruga_Luca" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Luca" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1E140E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "斑鳩ルカ" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/川口莉奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ikaruga_Luca" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ルカ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1E140E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "斑鳩ルカ" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q106152263" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ikaruga_Luca" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Luca" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1E140E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "斑鳩ルカ" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q106152263" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ikaruga_Luca" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ルカ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1E140E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "斑鳩ルカ" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "川口莉奈" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ikaruga_Luca" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Luca" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1E140E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "斑鳩ルカ" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "川口莉奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ikaruga_Luca" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ルカ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1E140E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "春日未来" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "山崎はるか" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kasuga_Mirai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "未来" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA5B76" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "春日未来" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "山崎はるか" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kasuga_Mirai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mirai" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA5B76" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "春日未来" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/山崎はるか" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kasuga_Mirai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "未来" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA5B76" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "春日未来" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/山崎はるか" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kasuga_Mirai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mirai" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA5B76" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "春日未来" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1661535" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kasuga_Mirai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "未来" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA5B76" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "春日未来" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1661535" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kasuga_Mirai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mirai" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA5B76" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "中野有香" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17159583" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nakano_Yuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CB78B0" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "中野有香" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17159583" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nakano_Yuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "有香" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CB78B0" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "中野有香" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/下地紫野" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nakano_Yuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CB78B0" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "中野有香" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/下地紫野" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nakano_Yuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "有香" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CB78B0" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "中野有香" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "下地紫野" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nakano_Yuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuka" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CB78B0" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "中野有香" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "下地紫野" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nakano_Yuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "有香" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CB78B0" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "岡崎泰葉" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Okazaki_Yasuha" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "泰葉" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "岡崎泰葉" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Okazaki_Yasuha" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yasuha" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "風野灯織" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/近藤玲奈" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kazano_Hiori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hiori" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "144384" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "風野灯織" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/近藤玲奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kazano_Hiori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "灯織" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "144384" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "風野灯織" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q27151126" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kazano_Hiori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hiori" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "144384" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "風野灯織" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q27151126" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kazano_Hiori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "灯織" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "144384" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "風野灯織" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "近藤玲奈" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kazano_Hiori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hiori" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "144384" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "風野灯織" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "近藤玲奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kazano_Hiori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "灯織" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "144384" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "浅野風香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asano_Fuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "風香" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "浅野風香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asano_Fuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Fuka" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "円城寺道流" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "濱野大輝" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Enjoji_Michiru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "道流" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CA9111" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "円城寺道流" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "濱野大輝" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Enjoji_Michiru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Michiru" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CA9111" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "円城寺道流" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/濱野大輝" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Enjoji_Michiru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "道流" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CA9111" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "円城寺道流" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/濱野大輝" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Enjoji_Michiru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Michiru" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CA9111" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "円城寺道流" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20042330" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Enjoji_Michiru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "道流" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CA9111" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "円城寺道流" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20042330" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Enjoji_Michiru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Michiru" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CA9111" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "北上麗花" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11482546" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitakami_Reika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "麗花" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6BB6B0" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "北上麗花" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11482546" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitakami_Reika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Reika" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6BB6B0" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "北上麗花" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/平山笑美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitakami_Reika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "麗花" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6BB6B0" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "北上麗花" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/平山笑美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitakami_Reika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Reika" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6BB6B0" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "北上麗花" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "平山笑美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitakami_Reika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "麗花" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6BB6B0" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "北上麗花" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "平山笑美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitakami_Reika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Reika" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6BB6B0" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "神谷幸広" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "狩野翔" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamiya_Yukihiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "幸広" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F09079" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "神谷幸広" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "狩野翔" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamiya_Yukihiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yukihiro" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F09079" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "神谷幸広" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/狩野翔" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamiya_Yukihiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "幸広" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F09079" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "神谷幸広" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/狩野翔" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamiya_Yukihiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yukihiro" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F09079" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "神谷幸広" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17686378" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamiya_Yukihiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "幸広" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F09079" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "神谷幸広" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17686378" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamiya_Yukihiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yukihiro" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F09079" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "佐々木千枝" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q8972760" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sasaki_Chie" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千枝" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006AB6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "佐々木千枝" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q8972760" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sasaki_Chie" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chie" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006AB6" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "佐々木千枝" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/今井麻夏" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sasaki_Chie" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千枝" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006AB6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "佐々木千枝" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/今井麻夏" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sasaki_Chie" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chie" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006AB6" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "佐々木千枝" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "今井麻夏" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sasaki_Chie" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千枝" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006AB6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "佐々木千枝" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "今井麻夏" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sasaki_Chie" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chie" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006AB6" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "若里春名" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "白井悠介" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Wakazato_Haruna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "春名" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "71D448" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "若里春名" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "白井悠介" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Wakazato_Haruna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Haruna" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "71D448" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "若里春名" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/白井悠介" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Wakazato_Haruna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "春名" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "71D448" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "若里春名" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/白井悠介" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Wakazato_Haruna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Haruna" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "71D448" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "若里春名" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11579372" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Wakazato_Haruna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "春名" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "71D448" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "若里春名" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11579372" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Wakazato_Haruna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Haruna" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "71D448" }
 		} ,
 		{
@@ -1264,91 +3149,248 @@ const sparql_idols = {
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B0C5E4" }
 		} ,
 		{
+		  "label": { "type": "literal" , "value": "槙原志保" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Makihara_Shiho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shiho" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "槙原志保" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Makihara_Shiho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "志保" }
+		} ,
+		{
 		  "label": { "type": "literal" , "value": "鷺沢文香" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "Ｍ・Ａ・Ｏ" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sagisawa_Fumika" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sagisawa_Fumika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "文香" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "鷺沢文香" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "Ｍ・Ａ・Ｏ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sagisawa_Fumika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Fumika" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "鷺沢文香" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1186964" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sagisawa_Fumika" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sagisawa_Fumika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "文香" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "鷺沢文香" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1186964" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sagisawa_Fumika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Fumika" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "鷺沢文香" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/市道真央" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sagisawa_Fumika" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sagisawa_Fumika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "文香" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "鷺沢文香" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/市道真央" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sagisawa_Fumika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Fumika" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大原みちる" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ohara_Michiru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "みちる" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大原みちる" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ohara_Michiru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Michiru" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "前川みく" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/高森奈津美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maekawa_Miku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "みく" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CA113A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "前川みく" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/高森奈津美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maekawa_Miku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miku" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CA113A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "前川みく" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1107456" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maekawa_Miku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "みく" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CA113A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "前川みく" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1107456" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maekawa_Miku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miku" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CA113A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "前川みく" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "高森奈津美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maekawa_Miku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "みく" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CA113A" }
 		} ,
 		{
-		  "label": { "type": "literal" , "value": "水本ゆかり" } ,
-		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17211589" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizumoto_Yukari" } ,
-		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E8BAD6" }
-		} ,
-		{
-		  "label": { "type": "literal" , "value": "水本ゆかり" } ,
-		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/藤田茜" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizumoto_Yukari" } ,
-		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E8BAD6" }
-		} ,
-		{
-		  "label": { "type": "literal" , "value": "水本ゆかり" } ,
-		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "藤田茜" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizumoto_Yukari" } ,
-		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E8BAD6" }
+		  "label": { "type": "literal" , "value": "前川みく" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "高森奈津美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maekawa_Miku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miku" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CA113A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "周防桃子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/渡部恵子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suou_Momoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "桃子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EFB864" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "周防桃子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/渡部恵子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suou_Momoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Momoko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EFB864" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "周防桃子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "渡部恵子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suou_Momoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "桃子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EFB864" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "周防桃子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "渡部恵子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suou_Momoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Momoko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EFB864" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "周防桃子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17217372" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suou_Momoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "桃子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EFB864" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "周防桃子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17217372" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suou_Momoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Momoko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EFB864" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水本ゆかり" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17211589" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizumoto_Yukari" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yukari" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E8BAD6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水本ゆかり" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17211589" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizumoto_Yukari" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ゆかり" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E8BAD6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水本ゆかり" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/藤田茜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizumoto_Yukari" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yukari" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E8BAD6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水本ゆかり" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/藤田茜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizumoto_Yukari" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ゆかり" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E8BAD6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水本ゆかり" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "藤田茜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizumoto_Yukari" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yukari" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E8BAD6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水本ゆかり" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "藤田茜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizumoto_Yukari" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ゆかり" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E8BAD6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "安斎都" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Anzai_Miyako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "都" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "安斎都" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Anzai_Miyako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miyako" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "佐竹美奈子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16264714" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Satake_Minako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Minako" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "58A6DC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "佐竹美奈子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16264714" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Satake_Minako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美奈子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "58A6DC" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "佐竹美奈子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "大関英里" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Satake_Minako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Minako" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "58A6DC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "佐竹美奈子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "大関英里" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Satake_Minako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美奈子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "58A6DC" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "佐竹美奈子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/大関英里" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Satake_Minako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Minako" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "58A6DC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "佐竹美奈子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/大関英里" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Satake_Minako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美奈子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "58A6DC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "杉坂海" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sugisaka_Umi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "海" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "杉坂海" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sugisaka_Umi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Umi" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "アスラン=BBⅡ世" } ,
@@ -1372,496 +3414,1267 @@ const sparql_idols = {
 		  "label": { "type": "literal" , "value": "白菊ほたる" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "天野聡美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiragiku_Hotaru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hotaru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D162CB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "白菊ほたる" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "天野聡美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiragiku_Hotaru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ほたる" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D162CB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "白菊ほたる" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/天野聡美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiragiku_Hotaru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hotaru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D162CB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "白菊ほたる" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/天野聡美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiragiku_Hotaru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ほたる" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D162CB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "白菊ほたる" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q62023684" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiragiku_Hotaru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hotaru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D162CB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "白菊ほたる" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q62023684" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiragiku_Hotaru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ほたる" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D162CB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "西城樹里" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q62024310" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Saijo_Juri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Juri" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFC602" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "西城樹里" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q62024310" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Saijo_Juri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "樹里" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFC602" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "西城樹里" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "永井真里子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Saijo_Juri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Juri" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFC602" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "西城樹里" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "永井真里子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Saijo_Juri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "樹里" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFC602" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "沢田麻理菜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sawada_Marina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Marina" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "沢田麻理菜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sawada_Marina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "麻理菜" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "ジュニー" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Juney" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "都築圭" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "土岐隼一" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsuzuki_Kei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "圭" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C5A6E2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "都築圭" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "土岐隼一" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsuzuki_Kei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kei" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C5A6E2" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "都築圭" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q18457703" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsuzuki_Kei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "圭" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C5A6E2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "都築圭" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q18457703" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsuzuki_Kei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kei" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C5A6E2" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "都築圭" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/土岐隼一" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsuzuki_Kei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "圭" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C5A6E2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "都築圭" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/土岐隼一" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsuzuki_Kei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kei" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C5A6E2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "江上椿" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Egami_Tsubaki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tsubaki" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "江上椿" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Egami_Tsubaki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "椿" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "中谷育" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "原嶋あかり" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nakatani_Iku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Iku" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7E78E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "中谷育" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "原嶋あかり" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nakatani_Iku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "育" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7E78E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "中谷育" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/原嶋あかり" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nakatani_Iku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Iku" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7E78E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "中谷育" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/原嶋あかり" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nakatani_Iku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "育" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7E78E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "中谷育" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11409597" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nakatani_Iku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Iku" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7E78E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "中谷育" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11409597" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nakatani_Iku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "育" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7E78E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "的場梨沙" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "集貝はな" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matoba_Risa" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matoba_Risa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "梨沙" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "的場梨沙" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "集貝はな" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matoba_Risa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Risa" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "箱崎星梨花" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "麻倉もも" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hakozaki_Serika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Serika" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "ED90BA" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "箱崎星梨花" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "麻倉もも" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hakozaki_Serika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "星梨花" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "ED90BA" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "箱崎星梨花" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/麻倉もも" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hakozaki_Serika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Serika" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "ED90BA" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "箱崎星梨花" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/麻倉もも" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hakozaki_Serika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "星梨花" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "ED90BA" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "箱崎星梨花" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16263653" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hakozaki_Serika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Serika" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "ED90BA" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "箱崎星梨花" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16263653" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hakozaki_Serika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "星梨花" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "ED90BA" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "北川真尋" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitagawa_Mahiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mahiro" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "北川真尋" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitagawa_Mahiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "真尋" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "並木芽衣子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Namiki_Meiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Meiko" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "並木芽衣子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Namiki_Meiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "芽衣子" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "三好紗南" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miyoshi_Sana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sana" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "三好紗南" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miyoshi_Sana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "紗南" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "間中美里" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Manaka_Misato" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美里" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "間中美里" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Manaka_Misato" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Misato" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "乙倉悠貴" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "中島由貴" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Otokura_Yuuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "悠貴" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F2C0C1" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "乙倉悠貴" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "中島由貴" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Otokura_Yuuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuuki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F2C0C1" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "乙倉悠貴" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/中島由貴" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Otokura_Yuuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "悠貴" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F2C0C1" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "乙倉悠貴" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/中島由貴" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Otokura_Yuuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuuki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F2C0C1" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "乙倉悠貴" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q22123863" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Otokura_Yuuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "悠貴" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F2C0C1" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "乙倉悠貴" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q22123863" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Otokura_Yuuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuuki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F2C0C1" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "真鍋いつき" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Manabe_Itsuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Itsuki" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "真鍋いつき" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Manabe_Itsuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "いつき" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "横山奈緒" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "渡部優衣" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yokoyama_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nao" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "788BC5" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "横山奈緒" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "渡部優衣" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yokoyama_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "奈緒" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "788BC5" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "横山奈緒" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11562757" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yokoyama_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nao" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "788BC5" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "横山奈緒" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11562757" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yokoyama_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "奈緒" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "788BC5" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "横山奈緒" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/渡部優衣" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yokoyama_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nao" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "788BC5" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "横山奈緒" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/渡部優衣" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yokoyama_Nao" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "奈緒" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "788BC5" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "白瀬咲耶" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "八巻アンナ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shirase_Sakuya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "咲耶" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006047" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "白瀬咲耶" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "八巻アンナ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shirase_Sakuya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sakuya" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006047" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "白瀬咲耶" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q56059704" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shirase_Sakuya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "咲耶" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006047" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "白瀬咲耶" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q56059704" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shirase_Sakuya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sakuya" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006047" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "紅井朱雀" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/益山武明" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akai_Suzaku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "朱雀" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E63C2E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "紅井朱雀" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/益山武明" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akai_Suzaku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Suzaku" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E63C2E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "紅井朱雀" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17222626" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akai_Suzaku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "朱雀" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E63C2E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "紅井朱雀" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17222626" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akai_Suzaku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Suzaku" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E63C2E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "紅井朱雀" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "益山武明" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akai_Suzaku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "朱雀" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E63C2E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "紅井朱雀" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "益山武明" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akai_Suzaku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Suzaku" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E63C2E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "棟方愛海" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q56118632" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Munakata_Atsumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Atsumi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C82F7F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "棟方愛海" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q56118632" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Munakata_Atsumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "愛海" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C82F7F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "棟方愛海" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "藤本彩花" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Munakata_Atsumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Atsumi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C82F7F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "棟方愛海" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "藤本彩花" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Munakata_Atsumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "愛海" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C82F7F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "七草にちか" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "紫月杏朱彩" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nanakusa_Nichika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "にちか" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A5CFB6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "七草にちか" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "紫月杏朱彩" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nanakusa_Nichika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nichika" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A5CFB6" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "安部菜々" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "三宅麻理恵" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Abe_Nana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "菜々" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E64A79" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "安部菜々" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "三宅麻理恵" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Abe_Nana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nana" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E64A79" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "安部菜々" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/三宅麻理恵" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Abe_Nana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "菜々" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E64A79" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "安部菜々" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/三宅麻理恵" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Abe_Nana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nana" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E64A79" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "安部菜々" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q6127820" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Abe_Nana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "菜々" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E64A79" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "安部菜々" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q6127820" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Abe_Nana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nana" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E64A79" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "月岡恋鐘" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "礒部花凜" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsukioka_Kogane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kogane" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F84CAD" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "月岡恋鐘" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "礒部花凜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsukioka_Kogane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "恋鐘" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F84CAD" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "月岡恋鐘" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/礒部花凜" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsukioka_Kogane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kogane" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F84CAD" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "月岡恋鐘" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/礒部花凜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsukioka_Kogane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "恋鐘" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F84CAD" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "月岡恋鐘" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q18990383" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsukioka_Kogane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kogane" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F84CAD" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "月岡恋鐘" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q18990383" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsukioka_Kogane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "恋鐘" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F84CAD" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "松田亜利沙" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "村川梨衣" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsuda_Arisa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Arisa" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B54461" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "松田亜利沙" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "村川梨衣" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsuda_Arisa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "亜利沙" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B54461" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "松田亜利沙" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q2811985" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsuda_Arisa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Arisa" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B54461" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "松田亜利沙" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q2811985" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsuda_Arisa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "亜利沙" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B54461" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "松田亜利沙" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/村川梨衣" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsuda_Arisa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Arisa" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B54461" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "松田亜利沙" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/村川梨衣" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsuda_Arisa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "亜利沙" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B54461" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "上条春菜" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20041809" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamijo_Haruna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "春菜" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "59B7DB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "上条春菜" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20041809" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamijo_Haruna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Haruna" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "59B7DB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "上条春菜" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "長島光那" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamijo_Haruna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "春菜" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "59B7DB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "上条春菜" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "長島光那" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamijo_Haruna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Haruna" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "59B7DB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "上条春菜" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/長島光那" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamijo_Haruna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "春菜" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "59B7DB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "上条春菜" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/長島光那" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kamijo_Haruna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Haruna" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "59B7DB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "堀裕子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "鈴木絵理" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hori_Yuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "裕子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E89B55" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "堀裕子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "鈴木絵理" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hori_Yuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E89B55" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "堀裕子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17160003" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hori_Yuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "裕子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E89B55" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "堀裕子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17160003" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hori_Yuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E89B55" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "堀裕子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/鈴木絵理" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hori_Yuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "裕子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E89B55" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "堀裕子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/鈴木絵理" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hori_Yuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E89B55" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "星井美希" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q901104" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hoshii_Miki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B4E04B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "星井美希" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q901104" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hoshii_Miki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美希" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B4E04B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "星井美希" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/長谷川明子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hoshii_Miki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B4E04B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "星井美希" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/長谷川明子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hoshii_Miki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美希" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B4E04B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "星井美希" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "長谷川明子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hoshii_Miki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B4E04B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "星井美希" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "長谷川明子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hoshii_Miki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美希" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B4E04B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "舞田類" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "榎木淳弥" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maita_Rui" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "類" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F5D24B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "舞田類" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "榎木淳弥" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maita_Rui" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rui" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F5D24B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "舞田類" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/榎木淳弥" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maita_Rui" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "類" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F5D24B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "舞田類" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/榎木淳弥" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maita_Rui" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rui" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F5D24B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "舞田類" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16264591" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maita_Rui" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "類" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F5D24B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "舞田類" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16264591" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Maita_Rui" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rui" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F5D24B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "辻野あかり" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "梅澤めぐ" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsujino_Akari" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsujino_Akari" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "あかり" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "辻野あかり" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "梅澤めぐ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsujino_Akari" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Akari" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "リュ・ヘナ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ryoo_Haena" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ko" , "value": "헤나" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "リュ・ヘナ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ryoo_Haena" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Haena" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "リュ・ヘナ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ryoo_Haena" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ヘナ" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "氏家むつみ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ujiie_Mutsumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "むつみ" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "氏家むつみ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ujiie_Mutsumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mutsumi" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "四条貴音" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "原由実" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shijou_Takane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Takane" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A6126A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "四条貴音" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "原由実" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shijou_Takane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "貴音" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A6126A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "四条貴音" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/原由実" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shijou_Takane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Takane" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A6126A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "四条貴音" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/原由実" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shijou_Takane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "貴音" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A6126A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "四条貴音" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q901521" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shijou_Takane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Takane" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A6126A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "四条貴音" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q901521" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shijou_Takane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "貴音" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A6126A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大槻唯" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17223371" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ohtsuki_Yui" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yui" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EFB817" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大槻唯" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17223371" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ohtsuki_Yui" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "唯" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EFB817" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大槻唯" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "山下七海" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ohtsuki_Yui" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yui" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EFB817" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大槻唯" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "山下七海" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ohtsuki_Yui" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "唯" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EFB817" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大槻唯" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/山下七海" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ohtsuki_Yui" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yui" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EFB817" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大槻唯" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/山下七海" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ohtsuki_Yui" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "唯" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EFB817" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "八宮めぐる" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "峯田茉優" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hachimiya_Meguru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Meguru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFE012" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "八宮めぐる" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "峯田茉優" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hachimiya_Meguru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "めぐる" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFE012" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "八宮めぐる" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q48764554" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hachimiya_Meguru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Meguru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFE012" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "八宮めぐる" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q48764554" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hachimiya_Meguru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "めぐる" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFE012" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "龍崎薫" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24875141" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ryuzaki_Kaoru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "薫" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4D956" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "龍崎薫" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24875141" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ryuzaki_Kaoru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kaoru" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4D956" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "龍崎薫" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "春瀬なつみ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ryuzaki_Kaoru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "薫" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4D956" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "龍崎薫" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "春瀬なつみ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ryuzaki_Kaoru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kaoru" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4D956" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "龍崎薫" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/春瀬なつみ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ryuzaki_Kaoru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "薫" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4D956" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "龍崎薫" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/春瀬なつみ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ryuzaki_Kaoru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kaoru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4D956" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "榊原里美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakakibara_Satomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Satomi" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "榊原里美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakakibara_Satomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "里美" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "森久保乃々" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "高橋花林" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Morikubo_Nono" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "乃々" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "97D3D3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "森久保乃々" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "高橋花林" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Morikubo_Nono" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nono" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "97D3D3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "森久保乃々" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20041113" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Morikubo_Nono" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "乃々" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "97D3D3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "森久保乃々" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20041113" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Morikubo_Nono" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nono" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "97D3D3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "森久保乃々" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/高橋花林" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Morikubo_Nono" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "乃々" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "97D3D3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "森久保乃々" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/高橋花林" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Morikubo_Nono" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nono" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "97D3D3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "我那覇響" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/沼倉愛美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ganaha_Hibiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "響" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "01ADB9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "我那覇響" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/沼倉愛美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ganaha_Hibiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hibiki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "01ADB9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "我那覇響" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q3844242" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ganaha_Hibiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "響" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "01ADB9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "我那覇響" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q3844242" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ganaha_Hibiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hibiki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "01ADB9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "我那覇響" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "沼倉愛美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ganaha_Hibiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "響" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "01ADB9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "我那覇響" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "沼倉愛美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ganaha_Hibiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hibiki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "01ADB9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "渋谷凛" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "福原綾香" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shibuya_Rin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "凛" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1C90CD" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "渋谷凛" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "福原綾香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shibuya_Rin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rin" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1C90CD" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "渋谷凛" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11591879" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shibuya_Rin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "凛" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1C90CD" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "渋谷凛" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11591879" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shibuya_Rin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rin" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1C90CD" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "渋谷凛" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/福原綾香" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shibuya_Rin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "凛" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1C90CD" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "渋谷凛" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/福原綾香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shibuya_Rin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rin" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1C90CD" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "向井拓海" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17221306" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mukai_Takumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Takumi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A90582" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "向井拓海" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17221306" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mukai_Takumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "拓海" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A90582" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "向井拓海" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/原優子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mukai_Takumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Takumi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A90582" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "向井拓海" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/原優子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mukai_Takumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "拓海" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A90582" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "向井拓海" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "原優子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mukai_Takumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Takumi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A90582" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "向井拓海" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "原優子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mukai_Takumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "拓海" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A90582" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "蒼井享介" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16746698" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aoi_Kyosuke" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kyosuke" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "23CD7A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "蒼井享介" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16746698" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aoi_Kyosuke" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "享介" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "23CD7A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "蒼井享介" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "山谷祥生" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aoi_Kyosuke" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kyosuke" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "23CD7A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "蒼井享介" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "山谷祥生" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aoi_Kyosuke" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "享介" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "23CD7A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "蒼井享介" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/山谷祥生" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aoi_Kyosuke" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kyosuke" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "23CD7A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "蒼井享介" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/山谷祥生" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aoi_Kyosuke" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "享介" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "23CD7A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "久川颯" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/長江里加" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hisakawa_Hayate" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "颯" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7ADAD6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "久川颯" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/長江里加" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hisakawa_Hayate" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hayate" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7ADAD6" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "久川颯" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q27150470" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hisakawa_Hayate" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "颯" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7ADAD6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "久川颯" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q27150470" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hisakawa_Hayate" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hayate" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7ADAD6" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "久川颯" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "長江里加" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hisakawa_Hayate" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "颯" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7ADAD6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "久川颯" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "長江里加" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hisakawa_Hayate" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hayate" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7ADAD6" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "佐藤心" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/花守ゆみり" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sato_Shin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shin" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E44E8E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "佐藤心" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/花守ゆみり" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sato_Shin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "心" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E44E8E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "佐藤心" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17219891" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sato_Shin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shin" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E44E8E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "佐藤心" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17219891" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sato_Shin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "心" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E44E8E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "佐藤心" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "花守ゆみり" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sato_Shin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shin" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E44E8E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "佐藤心" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "花守ゆみり" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sato_Shin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "心" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E44E8E" }
 		} ,
 		{
@@ -1875,1806 +4688,4871 @@ const sparql_idols = {
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Natalia" }
 		} ,
 		{
+		  "label": { "type": "literal" , "value": "奥山沙織" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Okuyama_Saori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Saori" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "奥山沙織" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Okuyama_Saori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "沙織" }
+		} ,
+		{
 		  "label": { "type": "literal" , "value": "豊川風花" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "末柄里恵" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Toyokawa_Fuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Fuka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7278A8" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "豊川風花" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "末柄里恵" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Toyokawa_Fuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "風花" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7278A8" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "豊川風花" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/末柄里恵" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Toyokawa_Fuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Fuka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7278A8" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "豊川風花" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/末柄里恵" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Toyokawa_Fuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "風花" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7278A8" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "豊川風花" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17159842" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Toyokawa_Fuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Fuka" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7278A8" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "豊川風花" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17159842" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Toyokawa_Fuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "風花" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7278A8" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "福山舞" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fukuyama_Mai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "舞" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "福山舞" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fukuyama_Mai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mai" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "瀬名詩織" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sena_Shiori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "詩織" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "瀬名詩織" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sena_Shiori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shiori" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高橋礼子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takahashi_Reiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "礼子" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高橋礼子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takahashi_Reiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Reiko" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "浅利七海" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asari_Nanami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nanami" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "浅利七海" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asari_Nanami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "七海" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "相川千夏" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aikawa_Chinatsu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千夏" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "相川千夏" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aikawa_Chinatsu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chinatsu" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "秋月律子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q3870205" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ritsuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "律子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "01A860" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "秋月律子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q3870205" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ritsuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ritsuko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "01A860" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "秋月律子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "若林直美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ritsuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "律子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "01A860" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "秋月律子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "若林直美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ritsuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ritsuko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "01A860" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "秋月律子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/若林直美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ritsuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "律子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "01A860" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "秋月律子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/若林直美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ritsuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ritsuko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "01A860" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "相馬夏美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Souma_Natsumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "夏美" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "相馬夏美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Souma_Natsumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Natsumi" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "塩見周子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/ルゥ・ティン" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiomi_Syuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "周子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "DEE2EB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "塩見周子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/ルゥ・ティン" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiomi_Syuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Syuko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "DEE2EB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "塩見周子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "ルゥ・ティン" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiomi_Syuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "周子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "DEE2EB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "塩見周子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "ルゥ・ティン" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiomi_Syuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Syuko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "DEE2EB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "塩見周子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24869202" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiomi_Syuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "周子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "DEE2EB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "塩見周子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24869202" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiomi_Syuko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Syuko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "DEE2EB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "有浦柑奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ariura_Kanna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kanna" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "有浦柑奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ariura_Kanna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "柑奈" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "小日向美穂" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/津田美波" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kohinata_Miho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美穂" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C64796" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "小日向美穂" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/津田美波" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kohinata_Miho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miho" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C64796" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "小日向美穂" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "津田美波" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kohinata_Miho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美穂" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C64796" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "小日向美穂" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "津田美波" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kohinata_Miho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miho" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C64796" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "小日向美穂" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q901835" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kohinata_Miho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美穂" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C64796" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "小日向美穂" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q901835" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kohinata_Miho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miho" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C64796" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "篠原礼" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shinohara_Rei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rei" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "篠原礼" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shinohara_Rei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "礼" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "伊集院惠" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ijuin_Megumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Megumi" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "伊集院惠" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ijuin_Megumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "惠" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "岸部彩華" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kishibe_Ayaka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "彩華" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "岸部彩華" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kishibe_Ayaka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ayaka" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "園田智代子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "白石晴香" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sonoda_Chiyoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chiyoko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F93B90" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "園田智代子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "白石晴香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sonoda_Chiyoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "智代子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F93B90" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "園田智代子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/白石晴香" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sonoda_Chiyoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chiyoko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F93B90" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "園田智代子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/白石晴香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sonoda_Chiyoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "智代子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F93B90" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "園田智代子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17993659" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sonoda_Chiyoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chiyoko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F93B90" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "園田智代子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17993659" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sonoda_Chiyoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "智代子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F93B90" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "小宮果穂" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q43427019" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Komiya_Kaho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kaho" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E5461C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "小宮果穂" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q43427019" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Komiya_Kaho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "果穂" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E5461C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "小宮果穂" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "河野ひより" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Komiya_Kaho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kaho" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E5461C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "小宮果穂" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "河野ひより" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Komiya_Kaho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "果穂" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E5461C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "高坂海美" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/上田麗奈" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kousaka_Umi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Umi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9739B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高坂海美" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/上田麗奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kousaka_Umi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "海美" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9739B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "高坂海美" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16264425" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kousaka_Umi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Umi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9739B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高坂海美" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16264425" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kousaka_Umi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "海美" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9739B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "高坂海美" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "上田麗奈" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kousaka_Umi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Umi" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9739B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高坂海美" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "上田麗奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kousaka_Umi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "海美" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9739B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "横山千佳" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yokoyama_Chika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chika" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "横山千佳" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yokoyama_Chika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千佳" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "持田亜里沙" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mochida_Arisa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "亜里沙" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "持田亜里沙" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mochida_Arisa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Arisa" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "桜井夢子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "矢作紗友里" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakurai_Yumeko" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakurai_Yumeko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "夢子" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桜井夢子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "矢作紗友里" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakurai_Yumeko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yumeko" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "桜井夢子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1193033" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakurai_Yumeko" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakurai_Yumeko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "夢子" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桜井夢子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1193033" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakurai_Yumeko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yumeko" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "桜井夢子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/矢作紗友里" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakurai_Yumeko" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakurai_Yumeko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "夢子" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桜井夢子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/矢作紗友里" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakurai_Yumeko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yumeko" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "太田優" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ohta_Yuu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuu" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "太田優" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ohta_Yuu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "優" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "橘ありす" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "佐藤亜美菜" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tachibana_Arisu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Arisu" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5881C1" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "橘ありす" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "佐藤亜美菜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tachibana_Arisu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ありす" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5881C1" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "橘ありす" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/佐藤亜美菜" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tachibana_Arisu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Arisu" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5881C1" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "橘ありす" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/佐藤亜美菜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tachibana_Arisu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ありす" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5881C1" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "橘ありす" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1150583" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tachibana_Arisu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Arisu" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5881C1" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "橘ありす" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1150583" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tachibana_Arisu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ありす" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5881C1" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "高森藍子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/金子有希" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takamori_Aiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Aiko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C5DD7F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高森藍子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/金子有希" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takamori_Aiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "藍子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C5DD7F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "高森藍子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q4358562" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takamori_Aiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Aiko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C5DD7F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高森藍子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q4358562" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takamori_Aiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "藍子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C5DD7F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "高森藍子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "金子有希" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takamori_Aiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Aiko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C5DD7F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高森藍子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "金子有希" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takamori_Aiko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "藍子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C5DD7F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "浅倉透" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "和久井優" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asakura_Toru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Toru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "50D0D0" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "浅倉透" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "和久井優" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asakura_Toru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "透" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "50D0D0" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "浅倉透" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q23948953" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asakura_Toru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Toru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "50D0D0" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "浅倉透" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q23948953" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asakura_Toru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "透" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "50D0D0" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "浅倉透" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/和久井優" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asakura_Toru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Toru" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "50D0D0" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "浅倉透" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/和久井優" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asakura_Toru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "透" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "50D0D0" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "天峰秀" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "伊瀬結陸" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Amamine_Shu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "秀" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "天峰秀" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "伊瀬結陸" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Amamine_Shu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shu" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "黒川千秋" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurokawa_Chiaki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chiaki" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "黒川千秋" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurokawa_Chiaki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千秋" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "土屋亜子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsuchiya_Ako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "亜子" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "土屋亜子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsuchiya_Ako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ako" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "北沢志保" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "雨宮天" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitazawa_Shiho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "志保" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AFA690" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "北沢志保" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "雨宮天" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitazawa_Shiho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shiho" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AFA690" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "北沢志保" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/雨宮天" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitazawa_Shiho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "志保" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AFA690" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "北沢志保" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/雨宮天" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitazawa_Shiho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shiho" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AFA690" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "北沢志保" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q14635194" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitazawa_Shiho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "志保" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AFA690" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "北沢志保" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q14635194" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitazawa_Shiho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shiho" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AFA690" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "栗原ネネ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurihara_Nene" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nene" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "栗原ネネ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kurihara_Nene" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ネネ" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "小早川紗枝" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "立花理香" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kobayakawa_Sae" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sae" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D967A3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "小早川紗枝" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "立花理香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kobayakawa_Sae" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "紗枝" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D967A3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "小早川紗枝" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q9046310" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kobayakawa_Sae" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sae" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D967A3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "小早川紗枝" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q9046310" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kobayakawa_Sae" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "紗枝" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D967A3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "小早川紗枝" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/立花理香" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kobayakawa_Sae" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sae" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D967A3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "小早川紗枝" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/立花理香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kobayakawa_Sae" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "紗枝" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D967A3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "秋山隼人" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "千葉翔也" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akiyama_Hayato" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hayato" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FE6B02" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "秋山隼人" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "千葉翔也" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akiyama_Hayato" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "隼人" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FE6B02" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "秋山隼人" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/千葉翔也" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akiyama_Hayato" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hayato" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FE6B02" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "秋山隼人" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/千葉翔也" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akiyama_Hayato" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "隼人" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FE6B02" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "秋山隼人" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11406719" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akiyama_Hayato" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hayato" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FE6B02" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "秋山隼人" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11406719" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akiyama_Hayato" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "隼人" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FE6B02" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "山下次郎" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/中島ヨシキ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yamashita_Jiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Jiro" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE7602" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "山下次郎" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/中島ヨシキ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yamashita_Jiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "次郎" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE7602" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "山下次郎" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11364383" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yamashita_Jiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Jiro" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE7602" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "山下次郎" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11364383" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yamashita_Jiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "次郎" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE7602" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "山下次郎" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "中島ヨシキ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yamashita_Jiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Jiro" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE7602" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "山下次郎" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "中島ヨシキ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yamashita_Jiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "次郎" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE7602" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大河タケル" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17161534" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Taiga_Takeru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Takeru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0E0C9F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大河タケル" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17161534" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Taiga_Takeru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "タケル" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0E0C9F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大河タケル" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/寺島惇太" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Taiga_Takeru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Takeru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0E0C9F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大河タケル" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/寺島惇太" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Taiga_Takeru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "タケル" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0E0C9F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大河タケル" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "寺島惇太" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Taiga_Takeru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Takeru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0E0C9F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大河タケル" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "寺島惇太" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Taiga_Takeru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "タケル" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0E0C9F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "城ヶ崎莉嘉" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "山本希望" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Jougasaki_Rika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "莉嘉" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7D30D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "城ヶ崎莉嘉" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "山本希望" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Jougasaki_Rika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rika" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7D30D" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "城ヶ崎莉嘉" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q9080262" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Jougasaki_Rika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "莉嘉" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7D30D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "城ヶ崎莉嘉" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q9080262" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Jougasaki_Rika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rika" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7D30D" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "城ヶ崎莉嘉" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/山本希望" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Jougasaki_Rika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "莉嘉" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7D30D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "城ヶ崎莉嘉" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/山本希望" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Jougasaki_Rika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rika" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7D30D" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "天ヶ瀬冬馬" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "寺島拓篤" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Amagase_Toma" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "冬馬" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F32333" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "天ヶ瀬冬馬" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "寺島拓篤" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Amagase_Toma" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Toma" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F32333" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "天ヶ瀬冬馬" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/寺島拓篤" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Amagase_Toma" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "冬馬" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F32333" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "天ヶ瀬冬馬" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/寺島拓篤" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Amagase_Toma" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Toma" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F32333" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "天ヶ瀬冬馬" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1041912" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Amagase_Toma" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "冬馬" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F32333" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "天ヶ瀬冬馬" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1041912" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Amagase_Toma" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Toma" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F32333" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "矢吹可奈" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "木戸衣吹" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yabuki_Kana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "可奈" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F5AD3B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "矢吹可奈" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "木戸衣吹" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yabuki_Kana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kana" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F5AD3B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "矢吹可奈" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/木戸衣吹" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yabuki_Kana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "可奈" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F5AD3B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "矢吹可奈" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/木戸衣吹" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yabuki_Kana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kana" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F5AD3B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "矢吹可奈" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q2276072" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yabuki_Kana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "可奈" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F5AD3B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "矢吹可奈" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q2276072" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yabuki_Kana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kana" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F5AD3B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "奥空心白" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "田中あいみ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Okuzora_Kohaku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kohaku" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FCFAD4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "奥空心白" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "田中あいみ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Okuzora_Kohaku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "心白" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FCFAD4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "奥空心白" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17160813" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Okuzora_Kohaku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kohaku" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FCFAD4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "奥空心白" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17160813" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Okuzora_Kohaku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "心白" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FCFAD4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "奥空心白" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/田中あいみ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Okuzora_Kohaku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kohaku" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FCFAD4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "奥空心白" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/田中あいみ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Okuzora_Kohaku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "心白" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FCFAD4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "首藤葵" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shuto_Aoi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Aoi" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "首藤葵" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shuto_Aoi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "葵" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "橘志狼" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/古畑恵介" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tachibana_Shiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "志狼" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D13037" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "橘志狼" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/古畑恵介" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tachibana_Shiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shiro" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D13037" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "橘志狼" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "古畑恵介" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tachibana_Shiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "志狼" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D13037" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "橘志狼" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "古畑恵介" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tachibana_Shiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shiro" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D13037" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "橘志狼" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q27150521" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tachibana_Shiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "志狼" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D13037" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "橘志狼" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q27150521" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tachibana_Shiro" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shiro" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D13037" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "藤居朋" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fujii_Tomo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "朋" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "藤居朋" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fujii_Tomo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tomo" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "夢見りあむ" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q35172322" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yumemi_Riamu" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yumemi_Riamu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Riamu" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "夢見りあむ" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q35172322" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yumemi_Riamu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "りあむ" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "夢見りあむ" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "星希成奏" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yumemi_Riamu" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yumemi_Riamu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Riamu" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "夢見りあむ" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "星希成奏" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yumemi_Riamu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "りあむ" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桐野アヤ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kirino_Aya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Aya" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桐野アヤ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kirino_Aya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "アヤ" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "真壁瑞希" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16263736" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Makabe_Mizuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "瑞希" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "99B7DC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "真壁瑞希" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16263736" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Makabe_Mizuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mizuki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "99B7DC" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "真壁瑞希" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "阿部里果" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Makabe_Mizuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "瑞希" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "99B7DC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "真壁瑞希" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "阿部里果" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Makabe_Mizuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mizuki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "99B7DC" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "真壁瑞希" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/阿部里果" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Makabe_Mizuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "瑞希" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "99B7DC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "真壁瑞希" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/阿部里果" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Makabe_Mizuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mizuki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "99B7DC" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "木村夏樹" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11451654" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kimura_Natsuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Natsuki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "55565A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "木村夏樹" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11451654" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kimura_Natsuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "夏樹" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "55565A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "木村夏樹" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "安野希世乃" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kimura_Natsuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Natsuki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "55565A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "木村夏樹" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "安野希世乃" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kimura_Natsuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "夏樹" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "55565A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "木村夏樹" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/安野希世乃" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kimura_Natsuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Natsuki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "55565A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "木村夏樹" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/安野希世乃" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kimura_Natsuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "夏樹" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "55565A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "榊夏来" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17217594" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakaki_Natsuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "夏来" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "24CAD2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "榊夏来" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17217594" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakaki_Natsuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Natsuki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "24CAD2" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "榊夏来" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/渡辺紘" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakaki_Natsuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "夏来" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "24CAD2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "榊夏来" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/渡辺紘" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakaki_Natsuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Natsuki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "24CAD2" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "榊夏来" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "渡辺紘" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakaki_Natsuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "夏来" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "24CAD2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "榊夏来" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "渡辺紘" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakaki_Natsuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Natsuki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "24CAD2" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "握野英雄" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "熊谷健太郎" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akuno_Hideo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "英雄" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "57B3E5" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "握野英雄" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "熊谷健太郎" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akuno_Hideo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hideo" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "57B3E5" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "握野英雄" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/熊谷健太郎" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akuno_Hideo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "英雄" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "57B3E5" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "握野英雄" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/熊谷健太郎" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akuno_Hideo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hideo" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "57B3E5" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "握野英雄" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24865804" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akuno_Hideo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "英雄" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "57B3E5" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "握野英雄" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24865804" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akuno_Hideo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hideo" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "57B3E5" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "宮本フレデリカ" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/髙野麻美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miyamoto_Frederica" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Frederica" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9E1861" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "宮本フレデリカ" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/髙野麻美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miyamoto_Frederica" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "フレデリカ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9E1861" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "宮本フレデリカ" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "髙野麻美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miyamoto_Frederica" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Frederica" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9E1861" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "宮本フレデリカ" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "髙野麻美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miyamoto_Frederica" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "フレデリカ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9E1861" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "宮本フレデリカ" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q62024404" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miyamoto_Frederica" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Frederica" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9E1861" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "宮本フレデリカ" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q62024404" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miyamoto_Frederica" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "フレデリカ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9E1861" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "杜野凛世" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q56702852" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Morino_Rinze" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "凛世" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "89C3EB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "杜野凛世" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q56702852" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Morino_Rinze" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rinze" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "89C3EB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "杜野凛世" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "丸岡和佳奈" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Morino_Rinze" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "凛世" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "89C3EB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "杜野凛世" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "丸岡和佳奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Morino_Rinze" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rinze" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "89C3EB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "樋口円香" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "土屋李央" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Higuchi_Madoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Madoka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "BE1E3E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "樋口円香" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "土屋李央" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Higuchi_Madoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "円香" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "BE1E3E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "樋口円香" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q67821352" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Higuchi_Madoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Madoka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "BE1E3E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "樋口円香" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q67821352" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Higuchi_Madoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "円香" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "BE1E3E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "最上静香" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "田所あずさ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mogami_Shizuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shizuka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6495CF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "最上静香" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "田所あずさ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mogami_Shizuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "静香" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6495CF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "最上静香" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/田所あずさ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mogami_Shizuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shizuka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6495CF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "最上静香" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/田所あずさ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mogami_Shizuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "静香" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6495CF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "最上静香" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q247629" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mogami_Shizuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shizuka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6495CF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "最上静香" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q247629" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mogami_Shizuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "静香" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6495CF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "徳川まつり" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/諏訪彩花" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tokugawa_Matsuri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "まつり" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5ABFB7" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "徳川まつり" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/諏訪彩花" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tokugawa_Matsuri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Matsuri" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5ABFB7" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "徳川まつり" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11631872" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tokugawa_Matsuri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "まつり" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5ABFB7" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "徳川まつり" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11631872" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tokugawa_Matsuri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Matsuri" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5ABFB7" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "徳川まつり" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "諏訪彩花" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tokugawa_Matsuri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "まつり" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5ABFB7" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "徳川まつり" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "諏訪彩花" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tokugawa_Matsuri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Matsuri" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5ABFB7" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "御手洗翔太" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/松岡禎丞" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mitarai_Shota" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "翔太" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "94D509" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "御手洗翔太" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/松岡禎丞" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mitarai_Shota" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shota" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "94D509" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "御手洗翔太" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q957795" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mitarai_Shota" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "翔太" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "94D509" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "御手洗翔太" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q957795" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mitarai_Shota" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shota" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "94D509" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "御手洗翔太" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "松岡禎丞" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mitarai_Shota" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "翔太" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "94D509" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "御手洗翔太" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "松岡禎丞" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mitarai_Shota" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shota" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "94D509" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "衛藤美紗希" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Etou_Misaki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Misaki" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "衛藤美紗希" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Etou_Misaki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美紗希" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "相原雪乃" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aihara_Yukino" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "雪乃" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "相原雪乃" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aihara_Yukino" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yukino" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "硲道夫" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/伊東健人" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hazama_Michio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "道夫" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "436CA9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "硲道夫" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/伊東健人" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hazama_Michio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Michio" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "436CA9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "硲道夫" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16264168" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hazama_Michio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "道夫" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "436CA9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "硲道夫" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16264168" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hazama_Michio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Michio" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "436CA9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "硲道夫" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "伊東健人" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hazama_Michio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "道夫" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "436CA9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "硲道夫" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "伊東健人" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hazama_Michio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Michio" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "436CA9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "桐生つかさ" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/河瀬茉希" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiryu_Tsukasa" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiryu_Tsukasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "つかさ" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桐生つかさ" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/河瀬茉希" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiryu_Tsukasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tsukasa" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "桐生つかさ" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "河瀬茉希" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiryu_Tsukasa" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiryu_Tsukasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "つかさ" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桐生つかさ" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "河瀬茉希" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiryu_Tsukasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tsukasa" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "桐生つかさ" } ,
 		  "cv": { "type": "uri" , "value": "https://www.wikidata.org/wiki/Q24867153" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiryu_Tsukasa" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiryu_Tsukasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "つかさ" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桐生つかさ" } ,
+		  "cv": { "type": "uri" , "value": "https://www.wikidata.org/wiki/Q24867153" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiryu_Tsukasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tsukasa" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "松永涼" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q6356324" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsunaga_Ryo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "涼" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "202449" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "松永涼" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q6356324" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsunaga_Ryo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ryo" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "202449" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "松永涼" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/千菅春香" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsunaga_Ryo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "涼" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "202449" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "松永涼" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/千菅春香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsunaga_Ryo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ryo" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "202449" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "松永涼" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "千菅春香" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsunaga_Ryo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "涼" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "202449" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "松永涼" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "千菅春香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsunaga_Ryo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ryo" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "202449" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "島原エレナ" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16265138" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shimabara_Elena" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Elena" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9BCE92" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "島原エレナ" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16265138" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shimabara_Elena" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "エレナ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9BCE92" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "島原エレナ" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "角元明日香" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shimabara_Elena" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Elena" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9BCE92" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "島原エレナ" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "角元明日香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shimabara_Elena" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "エレナ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9BCE92" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "島原エレナ" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/角元明日香" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shimabara_Elena" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Elena" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9BCE92" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "島原エレナ" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/角元明日香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shimabara_Elena" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "エレナ" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9BCE92" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "海老原菜帆" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ebihara_Naho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Naho" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "海老原菜帆" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ebihara_Naho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "菜帆" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "小室千奈美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Komuro_Chinami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千奈美" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "小室千奈美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Komuro_Chinami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chinami" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "篠宮可憐" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/近藤唯" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shinomiya_Karen" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Karen" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B63B40" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "篠宮可憐" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/近藤唯" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shinomiya_Karen" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "可憐" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B63B40" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "篠宮可憐" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "近藤唯" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shinomiya_Karen" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Karen" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B63B40" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "篠宮可憐" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "近藤唯" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shinomiya_Karen" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "可憐" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B63B40" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "篠宮可憐" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11638757" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shinomiya_Karen" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Karen" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B63B40" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "篠宮可憐" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11638757" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shinomiya_Karen" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "可憐" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B63B40" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "椎名法子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17161754" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiina_Noriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Noriko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA495B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "椎名法子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17161754" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiina_Noriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "法子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA495B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "椎名法子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/都丸ちよ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiina_Noriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Noriko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA495B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "椎名法子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/都丸ちよ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiina_Noriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "法子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA495B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "椎名法子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "都丸ちよ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiina_Noriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Noriko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA495B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "椎名法子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "都丸ちよ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shiina_Noriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "法子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA495B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大沼くるみ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ohnuma_Kurumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "くるみ" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大沼くるみ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ohnuma_Kurumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kurumi" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "速水奏" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11666486" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hayami_Kanade" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "奏" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0D386D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "速水奏" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11666486" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hayami_Kanade" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kanade" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0D386D" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "速水奏" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "飯田友子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hayami_Kanade" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "奏" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0D386D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "速水奏" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "飯田友子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hayami_Kanade" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kanade" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0D386D" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "速水奏" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/飯田友子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hayami_Kanade" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "奏" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0D386D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "速水奏" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/飯田友子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hayami_Kanade" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kanade" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "0D386D" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "城ヶ崎美嘉" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "佳村はるか" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Jougasaki_Mika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美嘉" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4982B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "城ヶ崎美嘉" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "佳村はるか" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Jougasaki_Mika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mika" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4982B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "城ヶ崎美嘉" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/佳村はるか" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Jougasaki_Mika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美嘉" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4982B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "城ヶ崎美嘉" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/佳村はるか" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Jougasaki_Mika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mika" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4982B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "城ヶ崎美嘉" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11385438" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Jougasaki_Mika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美嘉" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4982B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "城ヶ崎美嘉" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11385438" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Jougasaki_Mika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mika" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4982B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "綾瀬穂乃香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ayase_Honoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "穂乃香" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "綾瀬穂乃香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ayase_Honoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Honoka" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "小関麗奈" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q30108577" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koseki_Reina" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koseki_Reina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Reina" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "小関麗奈" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q30108577" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koseki_Reina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "麗奈" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "小関麗奈" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "長野佑紀" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koseki_Reina" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koseki_Reina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Reina" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "小関麗奈" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "長野佑紀" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koseki_Reina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "麗奈" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "伊瀬谷四季" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q18460273" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Iseya_Shiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shiki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F125C1" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "伊瀬谷四季" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q18460273" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Iseya_Shiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "四季" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F125C1" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "伊瀬谷四季" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/野上翔" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Iseya_Shiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shiki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F125C1" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "伊瀬谷四季" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/野上翔" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Iseya_Shiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "四季" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F125C1" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "伊瀬谷四季" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "野上翔" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Iseya_Shiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shiki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F125C1" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "伊瀬谷四季" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "野上翔" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Iseya_Shiki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "四季" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F125C1" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "芹沢あさひ" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "田中有紀" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Serizawa_Asahi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Asahi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F30100" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "芹沢あさひ" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "田中有紀" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Serizawa_Asahi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "あさひ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F30100" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "芹沢あさひ" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/田中有紀" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Serizawa_Asahi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Asahi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F30100" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "芹沢あさひ" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/田中有紀" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Serizawa_Asahi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "あさひ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F30100" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "芹沢あさひ" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q62078438" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Serizawa_Asahi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Asahi" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F30100" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "芹沢あさひ" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q62078438" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Serizawa_Asahi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "あさひ" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F30100" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "井村雪菜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Imura_Setsuna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "雪菜" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "井村雪菜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Imura_Setsuna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Setsuna" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水野翠" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizuno_Midori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Midori" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水野翠" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizuno_Midori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "翠" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "天空橋朋花" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/小岩井ことり" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tenkubashi_Tomoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tomoka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "BEE3E3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "天空橋朋花" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/小岩井ことり" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tenkubashi_Tomoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "朋花" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "BEE3E3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "天空橋朋花" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11460022" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tenkubashi_Tomoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tomoka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "BEE3E3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "天空橋朋花" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11460022" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tenkubashi_Tomoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "朋花" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "BEE3E3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "天空橋朋花" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "小岩井ことり" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tenkubashi_Tomoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tomoka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "BEE3E3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "天空橋朋花" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "小岩井ことり" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tenkubashi_Tomoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "朋花" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "BEE3E3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "田中琴葉" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "種田梨沙" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tanaka_Kotoha" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "琴葉" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "92CFBB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "田中琴葉" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "種田梨沙" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tanaka_Kotoha" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kotoha" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "92CFBB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "田中琴葉" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/種田梨沙" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tanaka_Kotoha" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "琴葉" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "92CFBB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "田中琴葉" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/種田梨沙" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tanaka_Kotoha" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kotoha" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "92CFBB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "田中琴葉" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q130125" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tanaka_Kotoha" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "琴葉" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "92CFBB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "田中琴葉" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q130125" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tanaka_Kotoha" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kotoha" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "92CFBB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "楊菲菲" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yao_Fueifuei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "菲菲" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "楊菲菲" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yao_Fueifuei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Fueifuei" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "鷹富士茄子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "森下来奈" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takafuji_Kako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kako" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5C068F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "鷹富士茄子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "森下来奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takafuji_Kako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "茄子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5C068F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "鷹富士茄子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/森下来奈" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takafuji_Kako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kako" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5C068F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "鷹富士茄子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/森下来奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takafuji_Kako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "茄子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5C068F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "鷹富士茄子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q55875405" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takafuji_Kako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kako" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5C068F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "鷹富士茄子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q55875405" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takafuji_Kako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "茄子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "5C068F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "日下部若葉" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kusakabe_Wakaba" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Wakaba" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "日下部若葉" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kusakabe_Wakaba" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "若葉" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "秋月涼" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q958874" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ryo_876" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ryo" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B2D468" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "秋月涼" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q958874" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ryo_876" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "涼" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B2D468" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "秋月涼" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/三瓶由布子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ryo_876" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ryo" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B2D468" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "秋月涼" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/三瓶由布子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ryo_876" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "涼" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B2D468" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "秋月涼" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "三瓶由布子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ryo_876" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ryo" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B2D468" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "秋月涼" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "三瓶由布子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ryo_876" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "涼" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B2D468" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "鷹城恭二" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q18225739" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takajo_Kyoji" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kyoji" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6AC4E9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "鷹城恭二" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q18225739" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takajo_Kyoji" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "恭二" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6AC4E9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "鷹城恭二" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/梅原裕一郎" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takajo_Kyoji" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kyoji" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6AC4E9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "鷹城恭二" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/梅原裕一郎" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takajo_Kyoji" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "恭二" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6AC4E9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "鷹城恭二" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "梅原裕一郎" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takajo_Kyoji" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kyoji" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6AC4E9" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "鷹城恭二" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "梅原裕一郎" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takajo_Kyoji" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "恭二" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "6AC4E9" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "猫柳キリオ" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/山下大輝" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nekoyanagi_Kirio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "キリオ" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7BD05" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "猫柳キリオ" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/山下大輝" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nekoyanagi_Kirio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kirio" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7BD05" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "猫柳キリオ" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "山下大輝" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nekoyanagi_Kirio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "キリオ" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7BD05" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "猫柳キリオ" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "山下大輝" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nekoyanagi_Kirio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kirio" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7BD05" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "猫柳キリオ" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q15975368" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nekoyanagi_Kirio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "キリオ" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7BD05" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "猫柳キリオ" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q15975368" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nekoyanagi_Kirio" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kirio" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7BD05" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "牙崎漣" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/小松昌平" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kizaki_Ren" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ren" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AC162A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "牙崎漣" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/小松昌平" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kizaki_Ren" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "漣" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AC162A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "牙崎漣" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24877064" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kizaki_Ren" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ren" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AC162A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "牙崎漣" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24877064" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kizaki_Ren" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "漣" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AC162A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "牙崎漣" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "小松昌平" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kizaki_Ren" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ren" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AC162A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "牙崎漣" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "小松昌平" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kizaki_Ren" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "漣" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AC162A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "菊地真" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "平田宏美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kikuchi_Makoto" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "真" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "515558" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "菊地真" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "平田宏美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kikuchi_Makoto" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Makoto" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "515558" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "菊地真" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q224847" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kikuchi_Makoto" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "真" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "515558" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "菊地真" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q224847" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kikuchi_Makoto" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Makoto" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "515558" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "菊地真" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/平田宏美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kikuchi_Makoto" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "真" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "515558" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "菊地真" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/平田宏美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kikuchi_Makoto" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Makoto" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "515558" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "緋田美琴" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "山根綺" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aketa_Mikoto" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mikoto" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "760E10" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "緋田美琴" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "山根綺" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aketa_Mikoto" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美琴" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "760E10" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "緋田美琴" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q57314549" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aketa_Mikoto" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mikoto" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "760E10" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "緋田美琴" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q57314549" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aketa_Mikoto" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美琴" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "760E10" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "眉見鋭心" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/大塚剛央" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mayumi_Eishin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Eishin" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "眉見鋭心" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/大塚剛央" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mayumi_Eishin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "鋭心" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "眉見鋭心" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q55536620" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mayumi_Eishin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Eishin" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "眉見鋭心" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q55536620" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mayumi_Eishin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "鋭心" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "眉見鋭心" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "大塚剛央" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mayumi_Eishin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Eishin" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "眉見鋭心" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "大塚剛央" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mayumi_Eishin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "鋭心" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "ケイト" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kate" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "櫻木真乃" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q52319813" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuragi_Mano" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "真乃" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFBAD6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "櫻木真乃" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q52319813" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuragi_Mano" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mano" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFBAD6" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "櫻木真乃" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "関根瞳" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuragi_Mano" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "真乃" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFBAD6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "櫻木真乃" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "関根瞳" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuragi_Mano" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mano" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFBAD6" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "片桐早苗" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "和氣あず未" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Katagiri_Sanae" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "早苗" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E94D1A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "片桐早苗" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "和氣あず未" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Katagiri_Sanae" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sanae" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E94D1A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "片桐早苗" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/和氣あず未" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Katagiri_Sanae" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "早苗" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E94D1A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "片桐早苗" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/和氣あず未" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Katagiri_Sanae" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sanae" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E94D1A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "片桐早苗" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q23948485" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Katagiri_Sanae" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "早苗" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E94D1A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "片桐早苗" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q23948485" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Katagiri_Sanae" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sanae" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E94D1A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "十時愛梨" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/原田ひとみ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Totoki_Airi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Airi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9425C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "十時愛梨" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/原田ひとみ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Totoki_Airi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "愛梨" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9425C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "十時愛梨" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "原田ひとみ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Totoki_Airi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Airi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9425C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "十時愛梨" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "原田ひとみ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Totoki_Airi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "愛梨" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9425C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "十時愛梨" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1046994" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Totoki_Airi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Airi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9425C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "十時愛梨" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1046994" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Totoki_Airi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "愛梨" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9425C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "喜多見柚" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "武田羅梨沙多胡" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitami_Yuzu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "柚" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EADC62" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "喜多見柚" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "武田羅梨沙多胡" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitami_Yuzu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuzu" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EADC62" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "喜多見柚" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q40039788" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitami_Yuzu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "柚" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EADC62" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "喜多見柚" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q40039788" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitami_Yuzu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuzu" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EADC62" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "荒木比奈" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "田辺留依" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Araki_Hina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "比奈" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "80C260" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "荒木比奈" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "田辺留依" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Araki_Hina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hina" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "80C260" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "荒木比奈" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16336231" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Araki_Hina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "比奈" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "80C260" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "荒木比奈" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16336231" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Araki_Hina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hina" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "80C260" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "荒木比奈" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/田辺留依" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Araki_Hina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "比奈" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "80C260" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "荒木比奈" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/田辺留依" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Araki_Hina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hina" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "80C260" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "西園寺琴歌" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Saionji_Kotoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kotoka" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "西園寺琴歌" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Saionji_Kotoka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "琴歌" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "斉藤洋子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Saito_Yoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "洋子" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "斉藤洋子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Saito_Yoko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yoko" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "梅木音葉" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Umeki_Otoha" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "音葉" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "梅木音葉" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Umeki_Otoha" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Otoha" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "エミリー" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/郁原ゆう" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Emily_Stewart" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Emily" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "554171" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "エミリー" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/郁原ゆう" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Emily_Stewart" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "エミリー" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "554171" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "エミリー" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17349881" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Emily_Stewart" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Emily" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "554171" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "エミリー" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17349881" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Emily_Stewart" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "エミリー" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "554171" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "エミリー" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "郁原ゆう" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Emily_Stewart" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Emily" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "554171" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "エミリー" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "郁原ゆう" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Emily_Stewart" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "エミリー" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "554171" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "桜庭薫" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/内田雄馬" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuraba_Kaoru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "薫" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1945BA" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桜庭薫" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/内田雄馬" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuraba_Kaoru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kaoru" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1945BA" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "桜庭薫" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "内田雄馬" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuraba_Kaoru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "薫" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1945BA" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桜庭薫" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "内田雄馬" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuraba_Kaoru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kaoru" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1945BA" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "桜庭薫" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17349748" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuraba_Kaoru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "薫" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1945BA" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桜庭薫" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17349748" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuraba_Kaoru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kaoru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1945BA" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "赤西瑛梨華" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akanishi_Erika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "瑛梨華" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "赤西瑛梨華" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akanishi_Erika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Erika" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "水瀬伊織" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/釘宮理恵" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Minase_Iori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Iori" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FD99E1" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水瀬伊織" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/釘宮理恵" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Minase_Iori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "伊織" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FD99E1" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "水瀬伊織" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q49554" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Minase_Iori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Iori" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FD99E1" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水瀬伊織" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q49554" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Minase_Iori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "伊織" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FD99E1" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "水瀬伊織" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "釘宮理恵" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Minase_Iori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Iori" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FD99E1" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水瀬伊織" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "釘宮理恵" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Minase_Iori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "伊織" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FD99E1" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "渡辺みのり" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q21019125" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Watanabe_Minori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "みのり" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FA90A2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "渡辺みのり" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q21019125" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Watanabe_Minori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Minori" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FA90A2" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "渡辺みのり" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "高塚智人" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Watanabe_Minori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "みのり" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FA90A2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "渡辺みのり" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "高塚智人" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Watanabe_Minori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Minori" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FA90A2" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "渡辺みのり" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/高塚智人" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Watanabe_Minori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "みのり" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FA90A2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "渡辺みのり" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/高塚智人" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Watanabe_Minori" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Minori" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FA90A2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "メアリー・コクラン" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mary_Cochran" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mary" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "メアリー・コクラン" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mary_Cochran" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "メアリー" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "朝比奈りん" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "阿澄佳奈" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asahina_Rin" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asahina_Rin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "りん" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "朝比奈りん" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "阿澄佳奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asahina_Rin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rin" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "朝比奈りん" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q49474" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asahina_Rin" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asahina_Rin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "りん" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "朝比奈りん" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q49474" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asahina_Rin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rin" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "朝比奈りん" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/阿澄佳奈" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asahina_Rin" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asahina_Rin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "りん" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "朝比奈りん" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/阿澄佳奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Asahina_Rin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rin" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "玲音" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "茅原実里" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Leon" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Leon" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "玲音" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "玲音" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "茅原実里" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Leon" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Leon" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "玲音" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/茅原実里" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Leon" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Leon" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "玲音" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "玲音" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/茅原実里" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Leon" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Leon" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "玲音" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q256910" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Leon" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Leon" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "玲音" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "玲音" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q256910" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Leon" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Leon" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "吉岡沙紀" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yoshioka_Saki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "沙紀" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "吉岡沙紀" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yoshioka_Saki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Saki" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "冴島清美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Saejima_Kiyomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "清美" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "冴島清美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Saejima_Kiyomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kiyomi" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "松原早耶" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsubara_Saya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Saya" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "松原早耶" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsubara_Saya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "早耶" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "姫野かのん" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "村瀬歩" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Himeno_Kanon" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kanon" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7B5C4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "姫野かのん" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "村瀬歩" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Himeno_Kanon" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "かのん" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7B5C4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "姫野かのん" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/村瀬歩" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Himeno_Kanon" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kanon" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7B5C4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "姫野かのん" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/村瀬歩" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Himeno_Kanon" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "かのん" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7B5C4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "姫野かのん" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11523377" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Himeno_Kanon" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kanon" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7B5C4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "姫野かのん" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11523377" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Himeno_Kanon" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "かのん" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7B5C4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "如月千早" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "今井麻美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kisaragi_Chihaya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chihaya" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "2743D2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "如月千早" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "今井麻美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kisaragi_Chihaya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千早" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "2743D2" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "如月千早" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/今井麻美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kisaragi_Chihaya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chihaya" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "2743D2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "如月千早" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/今井麻美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kisaragi_Chihaya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千早" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "2743D2" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "如月千早" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1042804" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kisaragi_Chihaya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chihaya" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "2743D2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "如月千早" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1042804" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kisaragi_Chihaya" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千早" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "2743D2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "柳瀬美由紀" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yanase_Miyuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美由紀" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "柳瀬美由紀" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yanase_Miyuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miyuki" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "姫川友紀" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/杜野まこ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Himekawa_Yuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9870C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "姫川友紀" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/杜野まこ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Himekawa_Yuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "友紀" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9870C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "姫川友紀" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11523609" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Himekawa_Yuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9870C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "姫川友紀" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11523609" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Himekawa_Yuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "友紀" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9870C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "姫川友紀" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "杜野まこ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Himekawa_Yuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9870C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "姫川友紀" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "杜野まこ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Himekawa_Yuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "友紀" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9870C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "及川雫" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/のぐちゆり" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Oikawa_Shizuku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shizuku" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFFFFF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "及川雫" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/のぐちゆり" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Oikawa_Shizuku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "雫" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFFFFF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "及川雫" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q28690535" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Oikawa_Shizuku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shizuku" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFFFFF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "及川雫" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q28690535" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Oikawa_Shizuku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "雫" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFFFFF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "及川雫" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "のぐちゆり" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Oikawa_Shizuku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shizuku" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFFFFF" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "及川雫" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "のぐちゆり" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Oikawa_Shizuku" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "雫" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFFFFF" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "双海亜美" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/下田麻美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futami_Ami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "亜美" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFE43F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "双海亜美" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/下田麻美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futami_Ami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ami" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFE43F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "双海亜美" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1070511" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futami_Ami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "亜美" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFE43F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "双海亜美" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1070511" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futami_Ami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ami" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFE43F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "双海亜美" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "下田麻美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futami_Ami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "亜美" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFE43F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "双海亜美" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "下田麻美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futami_Ami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ami" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFE43F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "丹羽仁美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Niwa_Hitomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "仁美" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "丹羽仁美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Niwa_Hitomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hitomi" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "サイネリア" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/ゆりん" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suzuki_Ayane" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suzuki_Ayane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "彩音" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "サイネリア" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/ゆりん" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suzuki_Ayane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ayane" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "サイネリア" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q8061678" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suzuki_Ayane" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suzuki_Ayane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "彩音" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "サイネリア" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q8061678" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suzuki_Ayane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ayane" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "サイネリア" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "ゆりん" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suzuki_Ayane" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suzuki_Ayane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "彩音" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "サイネリア" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "ゆりん" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suzuki_Ayane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ayane" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大西由里子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ohnishi_Yuriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yuriko" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大西由里子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ohnishi_Yuriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "由里子" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桃井あずき" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Momoi_Azuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "あずき" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "桃井あずき" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Momoi_Azuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Azuki" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "西川保奈美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nishikawa_Honami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "保奈美" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "西川保奈美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nishikawa_Honami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Honami" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "高槻やよい" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1096256" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takatsuki_Yayoi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yayoi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F39939" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高槻やよい" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1096256" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takatsuki_Yayoi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "やよい" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F39939" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "高槻やよい" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "仁後真耶子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takatsuki_Yayoi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yayoi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F39939" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高槻やよい" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "仁後真耶子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takatsuki_Yayoi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "やよい" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F39939" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "高槻やよい" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/仁後真耶子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takatsuki_Yayoi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yayoi" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F39939" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高槻やよい" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/仁後真耶子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takatsuki_Yayoi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "やよい" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F39939" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "望月聖" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mochizuki_Hijiri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hijiri" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "望月聖" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mochizuki_Hijiri" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "聖" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "工藤忍" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kudo_Shinobu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "忍" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "工藤忍" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kudo_Shinobu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shinobu" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "天道輝" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/仲村宗悟" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tendo_Teru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "輝" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E31C1A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "天道輝" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/仲村宗悟" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tendo_Teru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Teru" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E31C1A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "天道輝" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "仲村宗悟" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tendo_Teru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "輝" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E31C1A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "天道輝" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "仲村宗悟" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tendo_Teru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Teru" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E31C1A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "天道輝" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q22125229" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tendo_Teru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "輝" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E31C1A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "天道輝" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q22125229" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tendo_Teru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Teru" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E31C1A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "脇山珠美" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "嘉山未紗" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Wakiyama_Tamami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tamami" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3A75BB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "脇山珠美" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "嘉山未紗" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Wakiyama_Tamami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "珠美" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3A75BB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "脇山珠美" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q18701078" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Wakiyama_Tamami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tamami" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3A75BB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "脇山珠美" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q18701078" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Wakiyama_Tamami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "珠美" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3A75BB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "脇山珠美" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/嘉山未紗" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Wakiyama_Tamami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tamami" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3A75BB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "脇山珠美" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/嘉山未紗" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Wakiyama_Tamami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "珠美" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3A75BB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "佐久間まゆ" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1372615" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuma_Mayu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mayu" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D1197B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "佐久間まゆ" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1372615" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuma_Mayu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "まゆ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D1197B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "佐久間まゆ" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "牧野由依" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuma_Mayu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mayu" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D1197B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "佐久間まゆ" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "牧野由依" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuma_Mayu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "まゆ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D1197B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "佐久間まゆ" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/牧野由依" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuma_Mayu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mayu" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D1197B" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "佐久間まゆ" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/牧野由依" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sakuma_Mayu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "まゆ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D1197B" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "福丸小糸" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "田嶌紗蘭" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fukumaru_Koito" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "小糸" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7967C3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "福丸小糸" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "田嶌紗蘭" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fukumaru_Koito" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Koito" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7967C3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "福丸小糸" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q88349126" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fukumaru_Koito" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "小糸" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7967C3" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "福丸小糸" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q88349126" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fukumaru_Koito" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Koito" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7967C3" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "三村かな子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/大坪由佳" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mimura_Kanako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kanako" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4ABB4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "三村かな子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/大坪由佳" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mimura_Kanako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "かな子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4ABB4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "三村かな子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "大坪由佳" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mimura_Kanako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kanako" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4ABB4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "三村かな子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "大坪由佳" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mimura_Kanako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "かな子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4ABB4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "三村かな子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q3211762" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mimura_Kanako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kanako" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4ABB4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "三村かな子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q3211762" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mimura_Kanako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "かな子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4ABB4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "九十九一希" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "比留間俊哉" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsukumo_Kazuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kazuki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CF9E51" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "九十九一希" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "比留間俊哉" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsukumo_Kazuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "一希" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CF9E51" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "九十九一希" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/比留間俊哉" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsukumo_Kazuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kazuki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CF9E51" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "九十九一希" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/比留間俊哉" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsukumo_Kazuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "一希" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CF9E51" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "九十九一希" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q48749453" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsukumo_Kazuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kazuki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CF9E51" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "九十九一希" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q48749453" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tsukumo_Kazuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "一希" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "CF9E51" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "望月杏奈" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/夏川椎菜" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mochizuki_Anna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Anna" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7E6CA8" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "望月杏奈" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/夏川椎菜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mochizuki_Anna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "杏奈" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7E6CA8" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "望月杏奈" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17226876" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mochizuki_Anna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Anna" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7E6CA8" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "望月杏奈" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17226876" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mochizuki_Anna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "杏奈" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7E6CA8" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "望月杏奈" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "夏川椎菜" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mochizuki_Anna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Anna" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7E6CA8" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "望月杏奈" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "夏川椎菜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mochizuki_Anna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "杏奈" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "7E6CA8" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "久川凪" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "立花日菜" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hisakawa_Nagi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "凪" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7A1BA" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "久川凪" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "立花日菜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hisakawa_Nagi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nagi" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F7A1BA" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "赤城みりあ" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "黒沢ともよ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akagi_Miria" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "みりあ" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8C715" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "赤城みりあ" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "黒沢ともよ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akagi_Miria" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miria" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8C715" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "赤城みりあ" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1955926" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akagi_Miria" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "みりあ" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8C715" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "赤城みりあ" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1955926" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akagi_Miria" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miria" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8C715" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "赤城みりあ" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/黒沢ともよ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akagi_Miria" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "みりあ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8C715" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "赤城みりあ" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/黒沢ともよ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akagi_Miria" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miria" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8C715" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "イム・ユジン" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Im_Yujin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ユジン" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "イム・ユジン" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Im_Yujin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yujin" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "イム・ユジン" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Im_Yujin" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ko" , "value": "유진" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "松尾千鶴" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsuo_Chizuru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千鶴" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "松尾千鶴" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matsuo_Chizuru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chizuru" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "双海真美" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1070511" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futami_Mami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "真美" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFE43F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "双海真美" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1070511" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futami_Mami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mami" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFE43F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "双海真美" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "下田麻美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futami_Mami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "真美" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFE43F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "双海真美" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "下田麻美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futami_Mami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mami" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFE43F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "双海真美" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/下田麻美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futami_Mami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "真美" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFE43F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "双海真美" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/下田麻美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Futami_Mami" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mami" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFE43F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "福田のり子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "浜崎奈々" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fukuda_Noriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Noriko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "ECEB70" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "福田のり子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "浜崎奈々" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fukuda_Noriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "のり子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "ECEB70" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "福田のり子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/浜崎奈々" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fukuda_Noriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Noriko" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "ECEB70" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "福田のり子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/浜崎奈々" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fukuda_Noriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "のり子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "ECEB70" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "福田のり子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11557669" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fukuda_Noriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Noriko" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "ECEB70" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "福田のり子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11557669" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fukuda_Noriko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "のり子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "ECEB70" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "服部瞳子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hattori_Toko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Toko" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "服部瞳子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hattori_Toko" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "瞳子" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "古論クリス" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/駒田航" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koron_Chris" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "クリス" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1FC1DD" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "古論クリス" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/駒田航" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koron_Chris" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chris" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1FC1DD" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "古論クリス" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "駒田航" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koron_Chris" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "クリス" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1FC1DD" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "古論クリス" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "駒田航" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koron_Chris" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chris" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1FC1DD" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "古論クリス" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20040112" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koron_Chris" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "クリス" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1FC1DD" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "古論クリス" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20040112" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koron_Chris" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chris" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1FC1DD" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "三船美優" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "原田彩楓" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mifune_Miyu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miyu" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "01AAA5" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "三船美優" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "原田彩楓" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mifune_Miyu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美優" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "01AAA5" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "三船美優" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q27507360" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mifune_Miyu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miyu" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "01AAA5" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "三船美優" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q27507360" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mifune_Miyu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美優" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "01AAA5" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "北村想楽" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q27150533" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitamura_Sora" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sora" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "477525" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "北村想楽" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q27150533" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitamura_Sora" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "想楽" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "477525" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "北村想楽" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "汐谷文康" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitamura_Sora" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sora" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "477525" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "北村想楽" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "汐谷文康" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitamura_Sora" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "想楽" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "477525" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "北村想楽" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/汐谷文康" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitamura_Sora" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sora" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "477525" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "北村想楽" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/汐谷文康" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kitamura_Sora" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "想楽" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "477525" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "高垣楓" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "早見沙織" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takagaki_Kaede" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kaede" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "33D5AC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高垣楓" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "早見沙織" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takagaki_Kaede" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "楓" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "33D5AC" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "高垣楓" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/早見沙織" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takagaki_Kaede" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kaede" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "33D5AC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高垣楓" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/早見沙織" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takagaki_Kaede" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "楓" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "33D5AC" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "高垣楓" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1153079" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takagaki_Kaede" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kaede" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "33D5AC" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "高垣楓" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1153079" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Takagaki_Kaede" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "楓" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "33D5AC" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "諸星きらり" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/松嵜麗" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Moroboshi_Kirari" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kirari" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8CA02" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "諸星きらり" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/松嵜麗" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Moroboshi_Kirari" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "きらり" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8CA02" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "諸星きらり" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q391799" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Moroboshi_Kirari" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kirari" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8CA02" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "諸星きらり" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q391799" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Moroboshi_Kirari" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "きらり" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8CA02" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "諸星きらり" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "松嵜麗" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Moroboshi_Kirari" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kirari" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8CA02" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "諸星きらり" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "松嵜麗" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Moroboshi_Kirari" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "きらり" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F8CA02" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "白雪千夜" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "関口理咲" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shirayuki_Chiyo" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shirayuki_Chiyo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chiyo" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "白雪千夜" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "関口理咲" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shirayuki_Chiyo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千夜" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "白雪千夜" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q62024487" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shirayuki_Chiyo" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shirayuki_Chiyo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chiyo" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "白雪千夜" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q62024487" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shirayuki_Chiyo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千夜" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "佐城雪美" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "中澤ミナ" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sajo_Yukimi" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sajo_Yukimi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yukimi" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "佐城雪美" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "中澤ミナ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sajo_Yukimi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "雪美" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "秋月涼" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q958874" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ryo_315" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "涼" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "70B449" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "秋月涼" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q958874" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ryo_315" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ryo" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "70B449" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "秋月涼" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/三瓶由布子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ryo_315" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "涼" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "70B449" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "秋月涼" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/三瓶由布子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ryo_315" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ryo" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "70B449" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "秋月涼" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "三瓶由布子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ryo_315" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "涼" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "70B449" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "秋月涼" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "三瓶由布子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Akizuki_Ryo_315" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ryo" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "70B449" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "柏木翼" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/八代拓" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kashiwagi_Tsubasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tsubasa" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3BAF29" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "柏木翼" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/八代拓" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kashiwagi_Tsubasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "翼" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3BAF29" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "柏木翼" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "八代拓" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kashiwagi_Tsubasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tsubasa" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3BAF29" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "柏木翼" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "八代拓" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kashiwagi_Tsubasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "翼" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3BAF29" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "柏木翼" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q23846671" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kashiwagi_Tsubasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tsubasa" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3BAF29" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "柏木翼" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q23846671" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kashiwagi_Tsubasa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "翼" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3BAF29" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "古賀小春" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koga_Koharu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "小春" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "古賀小春" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Koga_Koharu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Koharu" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "ロコ" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/中村温姫" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Handa_Roco" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "路子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFF03C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "ロコ" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/中村温姫" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Handa_Roco" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Roco" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFF03C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "ロコ" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20041868" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Handa_Roco" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "路子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFF03C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "ロコ" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q20041868" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Handa_Roco" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Roco" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFF03C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "ロコ" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "中村温姫" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Handa_Roco" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "路子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFF03C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "ロコ" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "中村温姫" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Handa_Roco" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Roco" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FFF03C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "神楽麗" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "永野由祐" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kagura_Rei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rei" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3D5AC8" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "神楽麗" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "永野由祐" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kagura_Rei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "麗" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3D5AC8" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "神楽麗" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q26043734" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kagura_Rei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rei" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3D5AC8" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "神楽麗" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q26043734" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kagura_Rei" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "麗" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3D5AC8" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "村松さくら" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Muramatsu_Sakura" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "さくら" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "村松さくら" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Muramatsu_Sakura" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Sakura" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "浜川愛結奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hamakawa_Ayuna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "愛結奈" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "浜川愛結奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hamakawa_Ayuna" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ayuna" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "難波笑美" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/伊達朱里紗" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Namba_Emi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Emi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9463D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "難波笑美" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/伊達朱里紗" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Namba_Emi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "笑美" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9463D" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "難波笑美" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17160797" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Namba_Emi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Emi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9463D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "難波笑美" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17160797" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Namba_Emi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "笑美" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9463D" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "難波笑美" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "伊達朱里紗" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Namba_Emi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Emi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9463D" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "難波笑美" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "伊達朱里紗" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Namba_Emi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "笑美" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E9463D" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "二階堂千鶴" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "野村香菜子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nikaido_Chizuru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chizuru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19557" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "二階堂千鶴" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "野村香菜子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nikaido_Chizuru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千鶴" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19557" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "二階堂千鶴" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17215985" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nikaido_Chizuru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chizuru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19557" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "二階堂千鶴" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17215985" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nikaido_Chizuru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千鶴" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19557" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "二階堂千鶴" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/野村香菜子" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nikaido_Chizuru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Chizuru" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19557" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "二階堂千鶴" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/野村香菜子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nikaido_Chizuru" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "千鶴" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F19557" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "馬場このみ" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/高橋未奈美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Baba_Konomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Konomi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F1BECB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "馬場このみ" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/高橋未奈美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Baba_Konomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "このみ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F1BECB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "馬場このみ" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "髙橋ミナミ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Baba_Konomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Konomi" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F1BECB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "馬場このみ" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "髙橋ミナミ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Baba_Konomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "このみ" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F1BECB" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "馬場このみ" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q14756009" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Baba_Konomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Konomi" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F1BECB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "馬場このみ" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q14756009" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Baba_Konomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "このみ" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F1BECB" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "長富蓮実" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nagatomi_Hasumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "蓮実" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "長富蓮実" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Nagatomi_Hasumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hasumi" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "白坂小梅" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "桜咲千依" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shirasaka_Koume" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "小梅" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AAC5E2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "白坂小梅" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "桜咲千依" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shirasaka_Koume" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Koume" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AAC5E2" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "白坂小梅" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q19653797" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shirasaka_Koume" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "小梅" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AAC5E2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "白坂小梅" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q19653797" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shirasaka_Koume" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Koume" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AAC5E2" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "白坂小梅" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/桜咲千依" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shirasaka_Koume" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "小梅" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AAC5E2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "白坂小梅" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/桜咲千依" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shirasaka_Koume" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Koume" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "AAC5E2" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "二宮飛鳥" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "青木志貴" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ninomiya_Asuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Asuka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "552A7C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "二宮飛鳥" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "青木志貴" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ninomiya_Asuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "飛鳥" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "552A7C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "二宮飛鳥" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/青木志貴" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ninomiya_Asuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Asuka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "552A7C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "二宮飛鳥" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/青木志貴" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ninomiya_Asuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "飛鳥" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "552A7C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "二宮飛鳥" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q23948723" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ninomiya_Asuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Asuka" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "552A7C" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "二宮飛鳥" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q23948723" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ninomiya_Asuka" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "飛鳥" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "552A7C" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "藤本里奈" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/金子真由美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fujimoto_Rina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rina" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "653A2A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "藤本里奈" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/金子真由美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fujimoto_Rina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "里奈" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "653A2A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "藤本里奈" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "金子真由美" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fujimoto_Rina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rina" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "653A2A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "藤本里奈" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "金子真由美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fujimoto_Rina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "里奈" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "653A2A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "藤本里奈" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q41695472" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fujimoto_Rina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rina" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "653A2A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "藤本里奈" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q41695472" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Fujimoto_Rina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "里奈" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "653A2A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "クラリス" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Clarice" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "蒼井悠介" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/菊池勇成" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aoi_Yusuke" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "悠介" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FEE806" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "蒼井悠介" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/菊池勇成" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aoi_Yusuke" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yusuke" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FEE806" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "蒼井悠介" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "菊池勇成" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aoi_Yusuke" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "悠介" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FEE806" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "蒼井悠介" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "菊池勇成" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aoi_Yusuke" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yusuke" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FEE806" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "蒼井悠介" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24865828" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aoi_Yusuke" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "悠介" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FEE806" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "蒼井悠介" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24865828" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aoi_Yusuke" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Yusuke" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FEE806" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大神環" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "稲川英里" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ogami_Tamaki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tamaki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE762E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大神環" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "稲川英里" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ogami_Tamaki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "環" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE762E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大神環" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16264225" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ogami_Tamaki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tamaki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE762E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大神環" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q16264225" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ogami_Tamaki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "環" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE762E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大神環" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/稲川英里" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ogami_Tamaki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tamaki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE762E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大神環" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/稲川英里" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ogami_Tamaki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "環" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EE762E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "多田李衣菜" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "青木瑠璃子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Riina" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006DB2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "多田李衣菜" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "青木瑠璃子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "李衣菜" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006DB2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "多田李衣菜" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/青木瑠璃子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Riina" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006DB2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "多田李衣菜" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/青木瑠璃子" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "李衣菜" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006DB2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "多田李衣菜" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11661791" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Riina" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006DB2" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "多田李衣菜" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11661791" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "李衣菜" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006DB2" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "水嶋咲" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/小林大紀" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizushima_Saki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "咲" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FA7EB4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水嶋咲" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/小林大紀" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizushima_Saki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Saki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FA7EB4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "水嶋咲" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24865397" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizushima_Saki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "咲" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FA7EB4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水嶋咲" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24865397" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizushima_Saki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Saki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FA7EB4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "水嶋咲" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "小林大紀" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizushima_Saki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "咲" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FA7EB4" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "水嶋咲" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "小林大紀" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mizushima_Saki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Saki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "FA7EB4" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "詩花" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17160610" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shika" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "詩花" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "詩花" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17160610" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shika" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "詩花" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "高橋李依" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shika" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "詩花" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "詩花" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "高橋李依" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shika" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "詩花" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/高橋李依" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shika" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "詩花" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "詩花" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/高橋李依" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shika" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Shika" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "日高愛" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q50025" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hidaka_Ai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "愛" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E85786" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "日高愛" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q50025" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hidaka_Ai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ai" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E85786" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "日高愛" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/戸松遥" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hidaka_Ai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "愛" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E85786" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "日高愛" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/戸松遥" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hidaka_Ai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ai" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E85786" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "日高愛" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "戸松遥" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hidaka_Ai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "愛" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E85786" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "日高愛" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "戸松遥" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hidaka_Ai" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Ai" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E85786" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "喜多日菜子" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "深川芹亜" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kita_Hinako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hinako" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4D059" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "喜多日菜子" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "深川芹亜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kita_Hinako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "日菜子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4D059" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "喜多日菜子" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/深川芹亜" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kita_Hinako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hinako" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4D059" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "喜多日菜子" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/深川芹亜" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kita_Hinako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "日菜子" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4D059" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "喜多日菜子" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17209690" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kita_Hinako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Hinako" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4D059" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "喜多日菜子" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q17209690" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kita_Hinako" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "日菜子" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "F4D059" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "今井加奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Imai_Kana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "加奈" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "今井加奈" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Imai_Kana" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kana" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "三浦あずさ" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1149403" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miura_Azusa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "あずさ" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9238BE" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "三浦あずさ" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q1149403" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miura_Azusa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Azusa" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9238BE" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "三浦あずさ" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/たかはし智秋" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miura_Azusa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "あずさ" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9238BE" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "三浦あずさ" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/たかはし智秋" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miura_Azusa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Azusa" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9238BE" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "三浦あずさ" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "たかはし智秋" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miura_Azusa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "あずさ" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9238BE" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "三浦あずさ" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "たかはし智秋" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Miura_Azusa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Azusa" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "9238BE" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "島村卯月" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/大橋彩香" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shimamura_Uzuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "卯月" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EC7092" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "島村卯月" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/大橋彩香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shimamura_Uzuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Uzuki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EC7092" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "島村卯月" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "大橋彩香" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shimamura_Uzuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "卯月" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EC7092" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "島村卯月" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "大橋彩香" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shimamura_Uzuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Uzuki" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EC7092" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "島村卯月" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q9125022" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shimamura_Uzuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "卯月" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EC7092" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "島村卯月" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q9125022" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shimamura_Uzuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Uzuki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EC7092" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "兵藤レナ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hyodo_Rena" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "レナ" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "兵藤レナ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hyodo_Rena" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rena" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "三条ともみ" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q256910" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sanjo_Tomomi" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sanjo_Tomomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tomomi" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "三条ともみ" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q256910" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sanjo_Tomomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ともみ" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "三条ともみ" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "茅原実里" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sanjo_Tomomi" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sanjo_Tomomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tomomi" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "三条ともみ" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "茅原実里" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sanjo_Tomomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ともみ" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "三条ともみ" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/茅原実里" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sanjo_Tomomi" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sanjo_Tomomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Tomomi" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "三条ともみ" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/茅原実里" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Sanjo_Tomomi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "ともみ" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "和久井留美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Wakui_Rumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "留美" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "和久井留美" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Wakui_Rumi" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Rumi" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "ピエール" } ,
@@ -3695,115 +9573,263 @@ const sparql_idols = {
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "8BDC63" }
 		} ,
 		{
-		  "label": { "type": "literal" , "value": "多田李衣菜" } ,
-		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/青木瑠璃子" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Rina" } ,
-		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006DB2" }
+		  "label": { "type": "literal" , "value": "愛野渚" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aino_Nagisa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "渚" }
 		} ,
 		{
-		  "label": { "type": "literal" , "value": "多田李衣菜" } ,
-		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11661791" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Rina" } ,
-		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006DB2" }
-		} ,
-		{
-		  "label": { "type": "literal" , "value": "多田李衣菜" } ,
-		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "青木瑠璃子" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Rina" } ,
-		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "006DB2" }
+		  "label": { "type": "literal" , "value": "愛野渚" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Aino_Nagisa" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Nagisa" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "兜大吾" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "浦尾岳大" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kabuto_Daigo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Daigo" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E41C1A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "兜大吾" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "浦尾岳大" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kabuto_Daigo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "大吾" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E41C1A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "兜大吾" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q27150535" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kabuto_Daigo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Daigo" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E41C1A" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "兜大吾" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q27150535" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kabuto_Daigo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "大吾" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E41C1A" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大和亜季" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11522955" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yamato_Aki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Aki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "276E4E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大和亜季" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q11522955" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yamato_Aki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "亜季" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "276E4E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大和亜季" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/村中知" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yamato_Aki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Aki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "276E4E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大和亜季" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/村中知" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yamato_Aki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "亜季" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "276E4E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "大和亜季" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "村中知" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yamato_Aki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Aki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "276E4E" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "大和亜季" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "村中知" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yamato_Aki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "亜季" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "276E4E" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "遊佐こずえ" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "花谷麻妃" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yusa_Kozue" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yusa_Kozue" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kozue" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "遊佐こずえ" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "花谷麻妃" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yusa_Kozue" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "こずえ" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "遊佐こずえ" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24873835" } ,
-		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yusa_Kozue" }
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yusa_Kozue" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Kozue" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "遊佐こずえ" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q24873835" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yusa_Kozue" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "こずえ" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "矢口美羽" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yaguchi_Miu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miu" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "矢口美羽" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Yaguchi_Miu" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美羽" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "日野茜" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q5100189" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hino_Akane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "茜" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA4F21" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "日野茜" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q5100189" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hino_Akane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Akane" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA4F21" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "日野茜" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "赤﨑千夏" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hino_Akane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "茜" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA4F21" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "日野茜" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "赤﨑千夏" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hino_Akane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Akane" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA4F21" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "日野茜" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/赤﨑千夏" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hino_Akane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "茜" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA4F21" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "日野茜" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/赤﨑千夏" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hino_Akane" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Akane" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "EA4F21" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "イヴ・サンタクロース" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Eve_Santaclaus" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Eve" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "イヴ・サンタクロース" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Eve_Santaclaus" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "イヴ" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "原田美世" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Harada_Miyo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "美世" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "原田美世" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Harada_Miyo" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Miyo" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "上田鈴帆" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/春野ななみ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ueda_Suzuho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Suzuho" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C9870F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "上田鈴帆" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/春野ななみ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ueda_Suzuho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "鈴帆" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C9870F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "上田鈴帆" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "春野ななみ" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ueda_Suzuho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Suzuho" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C9870F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "上田鈴帆" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "春野ななみ" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ueda_Suzuho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "鈴帆" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C9870F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "上田鈴帆" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q18818006" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ueda_Suzuho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Suzuho" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C9870F" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "上田鈴帆" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q18818006" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ueda_Suzuho" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "鈴帆" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "C9870F" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "川島瑞樹" } ,
 		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q865906" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kawashima_Mizuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mizuki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3F59A6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "川島瑞樹" } ,
+		  "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q865906" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kawashima_Mizuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "瑞樹" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3F59A6" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "川島瑞樹" } ,
 		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/東山奈央" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kawashima_Mizuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mizuki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3F59A6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "川島瑞樹" } ,
+		  "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/東山奈央" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kawashima_Mizuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "瑞樹" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3F59A6" }
 		} ,
 		{
 		  "label": { "type": "literal" , "value": "川島瑞樹" } ,
 		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "東山奈央" } ,
 		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kawashima_Mizuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Mizuki" } ,
+		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3F59A6" }
+		} ,
+		{
+		  "label": { "type": "literal" , "value": "川島瑞樹" } ,
+		  "cv": { "type": "literal" , "xml:lang": "ja" , "value": "東山奈央" } ,
+		  "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kawashima_Mizuki" } ,
+		  "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "瑞樹" } ,
 		  "color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "3F59A6" }
 		}
 	  ]
@@ -3823,17 +9849,26 @@ URI→アイドル名に変換する辞書
 uri2idol = {
 	https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kawashima_Mizuki : 川島瑞樹,
 }
+
+givenName2idol = {
+	真 : 菊地真,
+	亜美: 双海亜美,
+}
 */
-let cv2idol = {}, uri2idol = {}, idol2cv = {}, idol2color = {}, idol_names = [];
+let cv2idol = {}, uri2idol = {}, idol2cv = {}, idol2color = {}, idol_names = [], givenName2idol = {};
 for (let item of sparql_idols.results.bindings){
 	const cv = item.cv;
-	if (cv['xml:lang']){
+	if (item.cv && cv['xml:lang']){
 		cv2idol[cv.value] = item.label.value;
 		idol2cv[item.label.value] = cv.value;
-		idol2color[item.label.value] = item.color ? item.color.value : '';
-		uri2idol[item.s.value] = item.label.value;
-		idol_names.push(item.label.value);
 	}
+	const givenName = item.givenName;
+	if(givenName && givenName['xml:lang']){
+		givenName2idol[givenName.value] = item.label.value;
+	}
+	idol2color[item.label.value] = item.color ? item.color.value : '';
+	uri2idol[item.s.value] = item.label.value;
+	idol_names.push(item.label.value);
 }
 
 
@@ -4385,18 +10420,6 @@ const sparql_units = {
 		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Suzumiya_Seika" }
 		} ,
 		{
-		  "unit": { "type": "literal" , "value": "センゴク華ランブ" } ,
-		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shuto_Aoi" }
-		} ,
-		{
-		  "unit": { "type": "literal" , "value": "センゴク華ランブ" } ,
-		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Niwa_Hitomi" }
-		} ,
-		{
-		  "unit": { "type": "literal" , "value": "センゴク華ランブ" } ,
-		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hamaguchi_Ayame" }
-		} ,
-		{
 		  "unit": { "type": "literal" , "value": "ジャパン・ワールド・ダンサブル" } ,
 		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Komuro_Chinami" }
 		} ,
@@ -4407,6 +10430,18 @@ const sparql_units = {
 		{
 		  "unit": { "type": "literal" , "value": "ジャパン・ワールド・ダンサブル" } ,
 		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Helen" }
+		} ,
+		{
+		  "unit": { "type": "literal" , "value": "センゴク華ランブ" } ,
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Shuto_Aoi" }
+		} ,
+		{
+		  "unit": { "type": "literal" , "value": "センゴク華ランブ" } ,
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Niwa_Hitomi" }
+		} ,
+		{
+		  "unit": { "type": "literal" , "value": "センゴク華ランブ" } ,
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hamaguchi_Ayame" }
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "スクラム組んで闘えホームラン!!!" } ,
@@ -4906,7 +10941,7 @@ const sparql_units = {
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "キング・オブ・ロックハート" } ,
-		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Rina" }
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" }
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "レジェンドデイズ" } ,
@@ -6542,7 +12577,7 @@ const sparql_units = {
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "Rock the Beat" } ,
-		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Rina" }
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" }
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "Rock the Beat" } ,
@@ -8225,6 +14260,18 @@ const sparql_units = {
 		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ibuki_Tsubasa" }
 		} ,
 		{
+		  "unit": { "type": "literal" , "value": "C.FIRST" } ,
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Amamine_Shu" }
+		} ,
+		{
+		  "unit": { "type": "literal" , "value": "C.FIRST" } ,
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hanazono_Momohito" }
+		} ,
+		{
+		  "unit": { "type": "literal" , "value": "C.FIRST" } ,
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mayumi_Eishin" }
+		} ,
+		{
 		  "unit": { "type": "literal" , "value": "キャンディアイランド" } ,
 		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mimura_Kanako" }
 		} ,
@@ -8734,7 +14781,7 @@ const sparql_units = {
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "デレパジ" } ,
-		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Rina" }
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" }
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "GW・FUN・CIRCUITS" } ,
@@ -9346,7 +15393,7 @@ const sparql_units = {
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "ロッキングガール" } ,
-		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Rina" }
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" }
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "ロッキングガール" } ,
@@ -10790,7 +16837,7 @@ const sparql_units = {
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "Masque:Rade" } ,
-		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Rina" }
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" }
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "Masque:Rade" } ,
@@ -10814,7 +16861,7 @@ const sparql_units = {
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "デレパ" } ,
-		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Rina" }
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" }
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "招き巫女三景" } ,
@@ -11870,7 +17917,7 @@ const sparql_units = {
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "蒼ノ楽団" } ,
-		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Rina" }
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" }
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "蒼ノ楽団" } ,
@@ -12046,7 +18093,7 @@ const sparql_units = {
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "＊" } ,
-		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Rina" }
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" }
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "浪速と淑女のマリアージュ" } ,
@@ -13754,10 +19801,6 @@ const sparql_units = {
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "CINDERELLA PROJECT" } ,
-		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Rina" }
-		} ,
-		{
-		  "unit": { "type": "literal" , "value": "CINDERELLA PROJECT" } ,
 		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Ogata_Chieri" }
 		} ,
 		{
@@ -13771,6 +19814,10 @@ const sparql_units = {
 		{
 		  "unit": { "type": "literal" , "value": "CINDERELLA PROJECT" } ,
 		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Moroboshi_Kirari" }
+		} ,
+		{
+		  "unit": { "type": "literal" , "value": "CINDERELLA PROJECT" } ,
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" }
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "CINDERELLA PROJECT" } ,
@@ -19206,7 +25253,7 @@ const sparql_units = {
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "ロック・ザ・ビート with ウサミン" } ,
-		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Rina" }
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" }
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "リコッタ" } ,
@@ -19558,7 +25605,7 @@ const sparql_units = {
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "給仕係のポット＆クロック" } ,
-		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Rina" }
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" }
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "秋月涼＆水谷絵理" } ,
@@ -20854,7 +26901,7 @@ const sparql_units = {
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "FOUR PIECE" } ,
-		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Rina" }
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" }
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "FOUR PIECE" } ,
@@ -21022,7 +27069,7 @@ const sparql_units = {
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "＊withなつなな" } ,
-		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Rina" }
+		  "member": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Tada_Riina" }
 		} ,
 		{
 		  "unit": { "type": "literal" , "value": "＊withなつなな" } ,
