@@ -22,8 +22,8 @@ function text2idols(text){
 			idols.push(cv2idol[name]);
 		}
 		//下の名前をフルネームに変換して追加
-		if (givenName2idol[name]){
-			idols.push(givenName2idol[name]);
+		if (givenName2idols[name]){
+			idols = idols.concat(givenName2idols[name]);
 		}
 	}
 	//重複削除して返す
@@ -72,7 +72,7 @@ function find_units(text){
 	html += '<h2 class="h4 bg-success">アイドル名一覧</h2>';
 	html += '<ol style="column-count: 2;">';
 	for (let idol of idols){
-		html += `<li><span style="background-color: #${idol2color[idol]};">　　</span>${idol} (${idol2cv[idol]})</li>`;
+		html += `<li><span style="background-color: #${idol2color[idol]};">　　</span>${idol} (${idol2cv[idol] ? idol2cv[idol] : '-'})</li>`;
 	}
 	html += '</ol>';
 

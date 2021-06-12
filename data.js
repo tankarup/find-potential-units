@@ -9850,12 +9850,13 @@ uri2idol = {
 	https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kawashima_Mizuki : 川島瑞樹,
 }
 
-givenName2idol = {
-	真 : 菊地真,
-	亜美: 双海亜美,
+givenName2idols = {
+	真 : [菊地真],
+	亜美: [双海亜美],
+	茜: [日野茜, 野々原茜]
 }
 */
-let cv2idol = {}, uri2idol = {}, idol2cv = {}, idol2color = {}, idol_names = [], givenName2idol = {};
+let cv2idol = {}, uri2idol = {}, idol2cv = {}, idol2color = {}, idol_names = [], givenName2idols = {};
 for (let item of sparql_idols.results.bindings){
 	const cv = item.cv;
 	if (item.cv && cv['xml:lang']){
@@ -9864,7 +9865,11 @@ for (let item of sparql_idols.results.bindings){
 	}
 	const givenName = item.givenName;
 	if(givenName && givenName['xml:lang']){
-		givenName2idol[givenName.value] = item.label.value;
+		if (givenName2idols[givenName.value]){
+			givenName2idols[givenName.value].push(item.label.value);
+		} else {
+			givenName2idols[givenName.value] = [item.label.value];
+		}
 	}
 	idol2color[item.label.value] = item.color ? item.color.value : '';
 	uri2idol[item.s.value] = item.label.value;
