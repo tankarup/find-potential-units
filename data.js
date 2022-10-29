@@ -27,7 +27,8 @@ const sparql_idols = { "head": {
         "label": { "type": "literal" , "value": "花園百々人" } ,
         "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q108390543" } ,
         "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Hanazono_Momohito" } ,
-        "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "百々人" }
+        "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "百々人" },
+		"color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "A2D55E" }
       } ,
       { 
         "label": { "type": "literal" , "value": "花園百々人" } ,
@@ -3671,7 +3672,8 @@ const sparql_idols = { "head": {
         "label": { "type": "literal" , "value": "的場梨沙" } ,
         "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q74548472" } ,
         "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Matoba_Risa" } ,
-        "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "梨沙" }
+        "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "梨沙" },
+		"color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "E31C93" }
       } ,
       { 
         "label": { "type": "literal" , "value": "的場梨沙" } ,
@@ -4867,7 +4869,8 @@ const sparql_idols = { "head": {
       { 
         "label": { "type": "literal" , "value": "ナターリア" } ,
         "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q66736457" } ,
-        "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Natalia" }
+        "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Natalia" },
+		"color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D95E25" }
       } ,
       { 
         "label": { "type": "literal" , "value": "ナターリア" } ,
@@ -5522,7 +5525,8 @@ const sparql_idols = { "head": {
         "label": { "type": "literal" , "value": "天峰秀" } ,
         "cv": { "type": "uri" , "value": "http://www.wikidata.org/entity/Q108390594" } ,
         "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Amamine_Shu" } ,
-        "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "秀" }
+        "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "秀" },
+		"color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "1D9ADD" }
       } ,
       { 
         "label": { "type": "literal" , "value": "天峰秀" } ,
@@ -6516,7 +6520,8 @@ const sparql_idols = { "head": {
         "label": { "type": "literal" , "value": "桐生つかさ" } ,
         "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/河瀬茉希" } ,
         "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Kiryu_Tsukasa" } ,
-        "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "つかさ" }
+        "givenName": { "type": "literal" , "xml:lang": "ja" , "value": "つかさ" },
+		"color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "B04EC5" }
       } ,
       { 
         "label": { "type": "literal" , "value": "桐生つかさ" } ,
@@ -7356,7 +7361,8 @@ const sparql_idols = { "head": {
         "label": { "type": "literal" , "value": "眉見鋭心" } ,
         "cv": { "type": "uri" , "value": "http://ja.dbpedia.org/resource/大塚剛央" } ,
         "s": { "type": "uri" , "value": "https://sparql.crssnky.xyz/imasrdf/RDFs/detail/Mayumi_Eishin" } ,
-        "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Eishin" }
+        "givenName": { "type": "literal" , "xml:lang": "en" , "value": "Eishin" },
+		"color": { "type": "literal" , "datatype": "http://www.w3.org/2001/XMLSchema#hexBinary" , "value": "D72630" }
       } ,
       { 
         "label": { "type": "literal" , "value": "眉見鋭心" } ,
@@ -10230,7 +10236,10 @@ for (let item of sparql_idols.results.bindings){
 			givenName2idols[givenName.value] = [item.label.value];
 		}
 	}
-	idol2color[item.label.value] = item.color ? item.color.value : '';
+	if (!idol2color[item.label.value]){
+		idol2color[item.label.value] = item.color ? item.color.value : '';
+	}
+	
 	uri2idol[item.s.value] = item.label.value;
 	idol_names.push(item.label.value);
 }
